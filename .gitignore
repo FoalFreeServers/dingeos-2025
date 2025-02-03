@@ -1,0 +1,51 @@
+# Copyrighted files
+/libraries/
+/versions/
+/mods/*.jar
+/mods/*.dis
+/*.jar
+/.fabric/
+
+# Big files
+*.zip
+*.7z
+
+# Uncessary logs
+/config/spark/
+/config/worldedit/.archive-unpack/
+/crash-reports/
+/dumps/
+/local/
+/logs/
+/modernfix/
+/.mixin.out/
+*.bak
+minecraft.pid
+
+# World data
+/patchouli_books/
+/woot/
+/w_dinges/advancements/
+/w_dinges/data/
+/w_dinges/datapacks/
+/w_dinges/deaths/
+/w_dinges/debug/
+/w_dinges/**/data/
+/w_dinges/**/entities/
+/w_dinges/**/poi/
+/w_dinges/**/region/
+/w_dinges/dimensions/
+/w_dinges/entities/
+/w_dinges/playerdata/
+/w_dinges/poi/
+/w_dinges/region/
+/w_dinges/stats/
+/w_dinges/icon.png
+/w_dinges/kubejs_persistent_data.nbt
+/w_dinges/level.*
+/w_dinges/session.lock
+/w_dinges/touchfile
+
+# Sensitive data
+/config/serverrestart/discord-webhook.json
+

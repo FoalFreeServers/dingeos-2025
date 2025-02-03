@@ -1,9 +1,9 @@
 {
-   "shutdownLength":28800,
+   "shutdownLength":86400,
    "embedFooterUrl":null,
    "embedFooterText":"Server Restart Notifications",
    "embedColor":15258703,
    "avatarUrl":null,
    "startupMessage":null,
-   "serverName":"Server"
+   "serverName":"DingeOS 2025"
 }

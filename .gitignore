@@ -47,5 +47,5 @@ minecraft.pid
 /w_dinges/touchfile
 
 # Sensitive data
-/config/serverrestart/discord-webhook.json
+/config/serverrestart/discord.json
 

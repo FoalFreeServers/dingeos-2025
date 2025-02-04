@@ -26,6 +26,18 @@ event.shaped(
   }
 )
 
+event.shaped(
+  Item.of('minecraft:crafting_table'),
+  [
+    ' AA',
+    ' AA',
+    '   '
+  ],
+  {
+    A: '#minecraft:planks'
+  }
+)
+
 // ████████ BUILDING WAND RECIPES ████████████████████████████████████████████████████
 
 // Removes default recipes for Building Wands

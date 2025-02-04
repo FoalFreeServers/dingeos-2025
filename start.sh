@@ -25,8 +25,8 @@ trap "rm -f $LOCKFILE; exit" INT TERM EXIT
 
 echo $$ > $LOCKFILE
 
-#while true;
-#do
+while true;
+do
 
 ulimit -a
 
@@ -55,7 +55,7 @@ $JAVA -Xms$RAM -Xmx$RAM \
 
 #rm world/minecolonies/*.zip
 
-#~/bin/backup-minecraft-full.sh
+~/bin/backup-minecraft-full.sh
 
 cd mods/
 ls -lh *.jar > mods.txt
@@ -65,18 +65,18 @@ git add .
 git commit -m "Sync from Server."
 git push
 
-#echo restarting in 5 seconds...
-#sleep 1
-#echo restarting in 4 seconds...
-#sleep 1
-#echo restarting in 3 seconds...
-#sleep 1
-#echo restarting in 2 seconds...
-#sleep 1
-#echo restarting in 1 second...
-#sleep 1
+echo restarting in 5 seconds...
+sleep 1
+echo restarting in 4 seconds...
+sleep 1
+echo restarting in 3 seconds...
+sleep 1
+echo restarting in 2 seconds...
+sleep 1
+echo restarting in 1 second...
+sleep 1
 
-#done
+done
 
 rm -f $LOCKFILE
 

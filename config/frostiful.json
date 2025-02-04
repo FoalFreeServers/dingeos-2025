@@ -51,11 +51,11 @@
     "skateUpgradeTemplateGenerateChance": 0.33
   },
   "freezingConfig": {
-    "doPassiveFreezing": true,
+    "doPassiveFreezing": false,
     "doWindSpawning": true,
     "windSpawnStrategy": "POINT",
     "spawnWindInAir": true,
-    "windDestroysTorches": true,
+    "windDestroysTorches": false,
     "doSnowPacking": true,
     "passiveFreezingTickInterval": 1,
     "windSpawnCapPerSecond": 15,
@@ -71,7 +71,7 @@
     "freezingWindFrost": 160,
     "conduitPowerWarmthPerTick": 12,
     "heatFromHotFloor": 12,
-    "shiverBelow": -0.51,
+    "shiverBelow": -0.81,
     "shiverWarmth": 1,
     "stopShiverWarmingBelowFoodLevel": 10,
     "warmFoodWarmthTime": 1200,

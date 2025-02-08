@@ -55,5 +55,6 @@ ServerEvents.tags('item', event => {
         // 'knightslime'
         // 'soulsteel'
     ];
-    plates.forEach(p => event.add('c:plates/' + p, '#c:' + m + '_plates'));
+    plates.forEach(p => event.add('c:plates/' + p, '#c:' + p + '_plates'));
 });
+

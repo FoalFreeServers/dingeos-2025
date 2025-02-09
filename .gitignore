@@ -45,6 +45,10 @@ minecraft.pid
 /w_dinges/level.*
 /w_dinges/session.lock
 /w_dinges/touchfile
+/w_dinges/gravestone_data.json
+/w_dinges/camerapture/
+/w_dinges/xaeromap.txt
+/w_dinges/player-mod-data/
 
 # Sensitive data
 /config/serverrestart/discord.json

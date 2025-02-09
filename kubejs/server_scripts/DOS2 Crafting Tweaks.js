@@ -291,7 +291,7 @@ ServerEvents.recipes(event => {
 	];
 	
 	tracks.forEach(t => event.recipes.createSequencedAssembly([ // start the recipe
-		Item.of("railways:track_" + t, 5),
+		Item.of("railways:track_" + t, 5)
 	], 'minecraft:' + t + '_slab', [
 		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'minecraft:iron_nugget']),
 		event.recipes.createFilling('create:incomplete_track', ['create:incomplete_track',Fluid.of('createmetalwork:molten_andesite_alloy', 4500)]),
@@ -302,17 +302,41 @@ ServerEvents.recipes(event => {
 	]).transitionalItem('create:incomplete_track').loops(0)
 	)
 	
-	event.recipes.createSequencedAssembly([ // start the recipe
-		 Item.of("create:precision_mechanism", 3)
-	], 'create:golden_sheet', [ // 'create:brass_ingot' is the input.
-	// the transitional item set by "transitionalItem('create:incomplete_large_cogwheel')" is the item that will be used during the recipe as the item that the input is using to transition to the output.
-		event.recipes.createFilling('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism',Fluid.of('molten_metals:molten_brass', 3500)]),
-		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:cogwrheel']),
+	event.recipes.createSequencedAssembly([
+		Item.of("create:precision_mechanism", 3)
+	], 'create:golden_sheet', [
+		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:cogwheel']),
 		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism','create:large_cogwheel']),
+		event.recipes.createFilling('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism',Fluid.of('createmetalwork:molten_andesite_alloy', 4500)]),
 		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism','minecraft:repeater']),
 		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:iron_nugget']),
 		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'createaddition:electrum_wire']),
-	]).transitionalItem('create:incomplete_precision_mechanism').loops(3) // set the transitional item and the loops (amount of repetitions)	
+	]).transitionalItem('create:incomplete_precision_mechanism').loops(3)	
+
+	event.recipes.createSequencedAssembly([ // start the recipe
+		Item.of("create:precision_mechanism", 3)
+	], 'create:golden_sheet', [ // 'create:brass_ingot' is the input.
+	// the transitional item set by "transitionalItem('create:incomplete_large_cogwheel')" is the item that will be used during the recipe as the item that the input is using to transition to the output.
+		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'minecraft:iron_nugget']),
+		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:cogwheel']),
+		event.recipes.createPressing('create:incomplete_precision_mechanism', 'create:incomplete_precision_mechanism'), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
+		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'minecraft:repeater']), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
+		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'createaddition:electrum_wire']), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
+		event.recipes.createFilling('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism',Fluid.of('tconstruct:molten_brass', 4500)]),
+	]).transitionalItem('create:precision_mechanism').loops(5) // set the transitional item and the loops (amount of repetitions)
+
+	event.remove({ output: 'createdeco:andesite_sheet' })
+	event.recipes.createCutting([
+	  '2x createdeco:andesite_sheet'
+	], 'create_dd:andesite_sheet')
+
+	event.remove({ input: 'minecraft:iron_ingot', output: 'createbigcannons:cast_iron_ingot' })
+	
+	event.recipes.createCompacting('createbigcannons:cast_iron_ingot', [
+	  'minecraft:iron_ingot',
+	  'createnuclear:coal_dust'
+	]).heated()
+
 
 // ████████ AE2 ADJUSTMENTS ████████████████████████████████████████████████████
 

@@ -119,6 +119,7 @@
 -rw-rw-r-- 1 sweetie sweetie  321K Feb  3 17:06 Kambrik-6.1.1+1.20.1-fabric.jar
 -rw-rw-r-- 1 sweetie sweetie  872K Feb  3 17:06 konkrete_fabric_1.8.1_MC_1.20.1.jar
 -rw-rw-r-- 1 sweetie sweetie  334K Feb  3 17:06 kubejsadditions-fabric-4.3.3.jar
+-rw-rw-r-- 1 sweetie sweetie   30K Feb  7 22:49 kubejs-create-fabric-2024.8.12-build.1.jar
 -rw-rw-r-- 1 sweetie sweetie  1.6M Feb  3 17:06 kubejs-fabric-2001.6.5-build.16.jar
 -rw-rw-r-- 1 sweetie sweetie  2.2M Feb  3 17:06 letsdo-bakery-fabric-2.0.4.jar
 -rw-rw-r-- 1 sweetie sweetie  2.0M Feb  3 17:06 letsdo-brewery-fabric-2.0.4.jar

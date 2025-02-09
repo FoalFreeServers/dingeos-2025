@@ -212,6 +212,9 @@ ServerEvents.recipes(event => {
 // ████████ CREATE ADJUSTMENTS ████████████████████████████████████████████████████
 
 ServerEvents.recipes(event => {
+	
+	// Blaze Cake Replacement Recipe
+	
 	event.remove({ output: 'create:blaze_cake_base' })
 
 	event.recipes.createMixing('create:blaze_cake_base', [
@@ -225,6 +228,9 @@ ServerEvents.recipes(event => {
 		'create:cinder_flour',
 		'create:polished_rose_quartz'
 ])
+	
+	// Spectral Ruby Replacement Recipe
+	
 	event.remove({ output: 'create_dd:spectral_ruby' })
 
 	event.recipes.createMixing('create_dd:spectral_ruby', [
@@ -234,7 +240,9 @@ ServerEvents.recipes(event => {
 		'minecraft:glowstone',
 		'betternether:nether_ruby'
 ])	
-
+	
+	// Lumisene Bucket Replacement Recipe
+	
 	event.remove({ output: 'supplementaries:lumisene_bucket' })
 	event.remove({ output: 'supplementaries:lumisene_bottle' })
 	event.recipes.createMixing('supplementaries:lumisene_bucket', [
@@ -247,6 +255,8 @@ ServerEvents.recipes(event => {
 		'minecraft:glow_berries'
 ]).heated()
 
+	// BetterX Ore Crushing Support
+	
 	event.recipes.createCrushing([
 		'betternether:nether_ruby',
 		Item.of('betternether:nether_ruby').withChance(0.5)
@@ -263,19 +273,25 @@ ServerEvents.recipes(event => {
 		Item.of('minecraft:redstone').withChance(0.5),
 		Item.of('create:experience_nugget').withChance(0.75)
 		], 'betternether:nether_redstone_ore')
-		
+	
+	// Track Alternative Recipe
+	
+	
 	event.recipes.createSequencedAssembly([ // start the recipe
-		 Item.of("create:track", 5)
+		 Item.of("create:track", 6)
 	], 'minecraft:smooth_stone_slab', [ // 'create:brass_ingot' is the input.
 	// the transitional item set by "transitionalItem('create:incomplete_large_cogwheel')" is the item that will be used during the recipe as the item that the input is using to transition to the output.
-		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'minecraft:iron_nugget']),
+		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'create:copper_nugget']),
 		event.recipes.createFilling('create:incomplete_track', ['create:incomplete_track',Fluid.of('createmetalwork:molten_andesite_alloy', 4500)]),
 		event.recipes.createPressing('create:incomplete_track', 'create:incomplete_track'), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
-		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'create:copper_nugget']), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
+		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'minecraft:iron_nugget']), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
 		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'create_dd:steel_nugget']), // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
 		event.recipes.createPressing('create:incomplete_track', 'create:incomplete_track') // like a normal recipe function, is used as a sequence step in this array. Input and output have the transitional item
-	]).transitionalItem('create:incomplete_track').loops(0) // set the transitional item and the loops (amount of repetitions)
-
+	]).transitionalItem('create:incomplete_track').loops(1) // set the transitional item and the loops (amount of repetitions)
+	
+	
+	// Modded Track Alternative Recipe
+	
 	const tracks = [
 	'acacia',
 	'birch',
@@ -290,17 +306,47 @@ ServerEvents.recipes(event => {
 	'cherry'
 	];
 	
+	// Regular width tracks
 	tracks.forEach(t => event.recipes.createSequencedAssembly([ // start the recipe
-		Item.of("railways:track_" + t, 5)
+		Item.of("railways:track_" + t, 6)
 	], 'minecraft:' + t + '_slab', [
-		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'minecraft:iron_nugget']),
+		event.recipes.createDeploying('railways:track_incomplete_' + t, ['railways:track_incomplete_' + t, 'create:copper_nugget']),
+		event.recipes.createFilling('railways:track_incomplete_' + t, ['railways:track_incomplete_' + t,Fluid.of('createmetalwork:molten_andesite_alloy', 4500)]),
+		event.recipes.createPressing('railways:track_incomplete_' + t, 'railways:track_incomplete_' + t),
+		event.recipes.createDeploying('railways:track_incomplete_' + t, ['railways:track_incomplete_' + t, 'minecraft:iron_nugget']),
+		event.recipes.createDeploying('railways:track_incomplete_' + t, ['railways:track_incomplete_' + t, 'create_dd:steel_nugget']),
+		event.recipes.createPressing('railways:track_incomplete_' + t, 'railways:track_incomplete_' + t)
+	]).transitionalItem('railways:track_incomplete_' + t).loops(1)
+	)
+
+	const ddtracks = [
+	'smoked',
+	'rose',
+	'rubber',
+	'spirit'
+	];
+	
+	// Create DD Tracks
+	ddtracks.forEach(d => event.recipes.createSequencedAssembly([ // start the recipe
+		Item.of("railways:track_create_dd_" + d, 6)
+	], 'create_dd:' + d + '_slab', [
+		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'create:copper_nugget']),
 		event.recipes.createFilling('create:incomplete_track', ['create:incomplete_track',Fluid.of('createmetalwork:molten_andesite_alloy', 4500)]),
 		event.recipes.createPressing('create:incomplete_track', 'create:incomplete_track'),
-		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'create:copper_nugget']),
+		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'minecraft:iron_nugget']),
 		event.recipes.createDeploying('create:incomplete_track', ['create:incomplete_track', 'create_dd:steel_nugget']),
 		event.recipes.createPressing('create:incomplete_track', 'create:incomplete_track')
-	]).transitionalItem('create:incomplete_track').loops(0)
+	]).transitionalItem('railways:track_incomplete_' + d).loops(1)
 	)
+	
+	/*/ 	
+	'create_dd_rose',
+	'create_dd_rubber',
+	'create_dd_smoked',
+	'create_dd_spirit'
+	/*/
+	
+	// Precision Mechanism Alternative Recipe
 	
 	event.recipes.createSequencedAssembly([
 		Item.of("create:precision_mechanism", 3)
@@ -312,6 +358,9 @@ ServerEvents.recipes(event => {
 		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'create:iron_nugget']),
 		event.recipes.createDeploying('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism', 'createaddition:electrum_wire']),
 	]).transitionalItem('create:incomplete_precision_mechanism').loops(3)	
+
+	// Precision Mechanism Alternative Recipe
+	// ONE OF THESE 2 RECIPES IS BROKEN, DONT REMOVE. I DONT REMEMBER WHICH ONE.
 
 	event.recipes.createSequencedAssembly([ // start the recipe
 		Item.of("create:precision_mechanism", 3)
@@ -325,10 +374,14 @@ ServerEvents.recipes(event => {
 		event.recipes.createFilling('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism',Fluid.of('tconstruct:molten_brass', 4500)]),
 	]).transitionalItem('create:precision_mechanism').loops(5) // set the transitional item and the loops (amount of repetitions)
 
+	// Andesite Alloy Sheet Conflict Resolve
+	
 	event.remove({ output: 'createdeco:andesite_sheet' })
 	event.recipes.createCutting([
 	  '2x createdeco:andesite_sheet'
 	], 'create_dd:andesite_sheet')
+
+	// Cast Iron Ingot Conflict Resolve
 
 	event.remove({ input: 'minecraft:iron_ingot', output: 'createbigcannons:cast_iron_ingot' })
 	

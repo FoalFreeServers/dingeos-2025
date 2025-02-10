@@ -178,7 +178,6 @@
 -rw-rw-r-- 1 sweetie sweetie  2.4M Feb  3 17:06 RoughlyEnoughItems-12.1.785-fabric.jar
 -rw-rw-r-- 1 sweetie sweetie  158K Feb  3 17:06 rrls-4.0.6.1+mc1.20.1-fabric.jar
 -rw-rw-r-- 1 sweetie sweetie   40K Feb  3 17:06 rsls-1.1.6.jar
--rw-rw-r-- 1 sweetie sweetie   25M Feb  3 17:06 sanguine-0.4.0.jar
 -rw-rw-r-- 1 sweetie sweetie   79K Feb  3 17:06 Searchables-fabric-1.20.1-1.0.3.jar
 -rw-rw-r-- 1 sweetie sweetie   26K Feb  3 17:35 ServerRestart-fabric-1.20.1-GITBORK.jar
 -rw-rw-r-- 1 sweetie sweetie   27K Feb  3 17:06 ShowMeWhatYouGot-1.20-1.1.1.jar

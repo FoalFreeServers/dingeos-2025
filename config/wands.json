@@ -17,7 +17,7 @@
   "mend_tools": true,
   "enable_vein_mode": true,
   "enable_blast_mode": false,
-  "disable_destroy_replace": true,
+  "disable_destroy_replace": false,
   "magic_bag_1_limit": 17280,
   "magic_bag_2_limit": 172800,
   "wand_mode_display_x_pos": 75.0,

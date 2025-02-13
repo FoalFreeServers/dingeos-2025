@@ -393,17 +393,39 @@ ServerEvents.recipes(event => {
 
 // ████████ AE2 ADJUSTMENTS ████████████████████████████████████████████████████
 
-event.shaped(
-  Item.of('ae2:certus_quartz_crystal', 3),
-  [
-    'ABB',
-    'BBB',
-    'BBB'
-  ],
-  {
-    A: 'minecraft:quartz',
-    B: 'minecraft:lapis_lazuli'
-  }
-)
+	event.shaped(
+	  Item.of('ae2:certus_quartz_crystal', 3),
+	  [
+		'ABB',
+		'BBB',
+		'BBB'
+	  ],
+	  {
+		A: 'minecraft:quartz',
+		B: 'minecraft:lapis_lazuli'
+	  }
+	)
+})
 
+// ████████ UNIVERSAL ONION RECIPES ████████████████████████████████████████████████████
+
+// c:/onion
+
+ServerEvents.tags('item', event => {
+	event.add('c:onion', 'farmersdelight:onion')
+
+})
+ServerEvents.recipes(event => {
+	event.replaceInput(
+	  { input: 'farm_and_charm:onion' }, // Arg 1: the filter
+	  'farm_and_charm:onion',            // Arg 2: the item to replace
+	  '#c:onion'         // Arg 3: the item to replace it with
+	  // Note: tagged fluid ingredients do not work on Fabric, but tagged items do.
+	)
+	event.replaceInput(
+	  { input: 'farmersdelight:onion' }, // Arg 1: the filter
+	  'farmersdelight:onion',            // Arg 2: the item to replace
+	  '#c:onion'         // Arg 3: the item to replace it with
+	  // Note: tagged fluid ingredients do not work on Fabric, but tagged items do.
+	)
 })

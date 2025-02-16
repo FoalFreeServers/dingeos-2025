@@ -1,7 +1,7 @@
 {
   "version": 4,
-  "max_image_bytes": 1200000,
-  "max_image_resolution": 1280,
+  "max_image_bytes": 12000000,
+  "max_image_resolution": 12800,
   "ms_per_picture": 50,
   "can_rotate_pictures": true,
   "check_frame_position": false,

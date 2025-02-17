@@ -1,0 +1,75 @@
+{
+  "type": "lootbags:loot",
+  "name": "Rare Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "RARE",
+  "output": {
+    "rolls": 7,
+    "entries": [
+      {
+        "stack": "create:andesite_funnel",
+        "weight": 150
+      },
+      {
+        "stack": "create:andesite_tunnel",
+        "weight": 150
+      },
+      {
+        "stack": "create:fluid_tank",
+        "weight": 100
+      },
+      {
+        "stack": "create:crushing_wheel",
+        "weight": 100
+      },
+      {
+        "stack": "create:basin",
+        "weight": 100
+      },
+      {
+        "stack": "create:blaze_cake_base",
+        "weight": 100
+      },
+      {
+        "stack": "create:brass_ingot",
+        "weight": 400
+      },
+      {
+        "stack": "create:electron_tube",
+        "weight": 100
+      },
+      {
+        "stack": "create:windmill_bearing",
+        "weight": 100
+      },
+      {
+        "stack": "create:mechanical_pump",
+        "weight": 100
+      },
+      {
+        "stack": "create:fluid_valve",
+        "weight": 100
+      },
+      {
+        "stack": "createaddition:rolling_mill",
+        "weight": 100
+      },
+      {
+        "stack": "create:mechanical_press",
+        "weight": 100
+      },
+      {
+        "stack": "create:stressometer",
+        "weight": 100
+      },
+      {
+        "stack": "create:precision_mechanism",
+        "weight": 30
+      },
+      {
+        "stack": "create:crafter_slot_cover",
+        "weight": 120
+      }
+    ]
+  }
+}

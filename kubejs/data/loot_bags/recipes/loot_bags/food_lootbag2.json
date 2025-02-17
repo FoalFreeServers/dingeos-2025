@@ -1,0 +1,59 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Food 2)",
+  "color": "#EE50E7",
+  "rarity": "EPIC",
+  "output": {
+    "rolls": 28,
+    "entries": [
+      {
+        "stack": "create_bic_bit:wrapped_ketchup_topped_fries",
+        "weight": 14
+      },
+      {
+        "stack": "farmersdelight:fried_egg",
+        "weight": 32
+      },
+      {
+        "stack": "create_bic_bit:fries",
+        "weight": 24
+      },
+      {
+        "stack": "farmersdelight:noodle_soup",
+        "weight": 4
+      },
+      {
+        "stack": "create_bic_bit:kruidnoten",
+        "weight": 16
+      },
+      {
+        "stack": "candlelight:roastbeef_with_glazed_carrots",
+        "weight": 5
+      },
+      {
+        "stack": "candlelight:omelet",
+        "weight": 5
+      },
+      {
+        "stack": "create:bar_of_chocolate",
+        "weight": 12
+      },
+      {
+        "stack": "farmersdelight:cooked_rice",
+        "weight": 24
+      },
+      {
+        "stack": "bakery:strawberry_cupcake",
+        "weight": 42
+      },
+      {
+        "stack": "bakery:bundt_cake_slice",
+        "weight": 18
+      },
+      {
+        "stack": "farmersdelight:cake_slice",
+        "weight": 22
+      }
+    ]
+  }
+}

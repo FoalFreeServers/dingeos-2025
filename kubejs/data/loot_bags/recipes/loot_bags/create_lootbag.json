@@ -1,0 +1,35 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "COMMON",
+  "output": {
+    "rolls": 24,
+    "entries": [
+      {
+        "stack": "create:shaft",
+        "weight": 96
+      },
+      {
+        "stack": "create:cogwheel",
+        "weight": 64
+      },
+      {
+        "stack": "create:belt_connector",
+        "weight": 32
+      },
+      {
+        "stack": "create:andesite_alloy",
+        "weight": 46
+      },
+      {
+        "stack": "create:fluid_pipe",
+        "weight": 24
+      },
+      {
+        "stack": "create:andesite_casing",
+        "weight": 32
+      }
+    ]
+  }
+}

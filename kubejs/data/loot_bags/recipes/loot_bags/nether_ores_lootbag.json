@@ -1,0 +1,35 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Nether Ores)",
+  "color": "#928C72",
+  "rarity": "COMMON",
+  "output": {
+    "rolls": 48,
+    "entries": [
+      {
+        "stack": "minecraft:quartz",
+        "weight": 64
+      },
+      {
+        "stack": "minecraft:gold_nugget",
+        "weight": 32
+      },
+      {
+        "stack": "createmetalwork:crushed_raw_cincinnasite",
+        "weight": 24
+      },
+      {
+        "stack": "betternether:nether_ruby",
+        "weight": 16
+      },
+      {
+        "stack": "tconstruct:raw_cobalt",
+        "weight": 4
+      },
+      {
+        "stack": "tconstruct:raw_cobalt_block",
+        "weight": 1
+      }
+    ]
+  }
+}

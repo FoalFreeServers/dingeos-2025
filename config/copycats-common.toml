@@ -9,7 +9,6 @@ disableMigration = false
 	copycat_byte = true
 	copycat_wooden_pressure_plate = true
 	copycat_vertical_slice = true
-	#.
 	copycat_vertical_stairs = true
 	copycat_shaft = true
 	copycat_fence = true
@@ -41,6 +40,15 @@ disableMigration = false
 	copycat_beam = true
 	copycat_door = true
 	copycat_slab = true
+	#.
+	copycat_stacked_half_layer = true
+	copycat_sliding_door = true
+	copycat_folding_door = true
+	copycat_pane = true
+	copycat_byte_panel = true
+	copycat_corner_slice = true
+	copycat_flat_pane = true
+	copycat_vertical_half_layer = true
 
 #.
 #Enable/disable categories of features. Disabling a category hides all related features. Values on server override clients

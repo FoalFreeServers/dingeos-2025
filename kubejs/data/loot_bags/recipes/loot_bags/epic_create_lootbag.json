@@ -1,0 +1,79 @@
+{
+  "type": "lootbags:loot",
+  "name": "Epic Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "EPIC",
+  "output": {
+    "rolls": 6,
+    "entries": [
+      {
+        "stack": "create:smart_chute",
+        "weight": 150
+      },
+      {
+        "stack": "create:smart_fluid_pipe",
+        "weight": 150
+      },
+      {
+        "stack": "create:brass_funnel",
+        "weight": 150
+      },
+      {
+        "stack": "create:brass_tunnel",
+        "weight": 150
+      },
+      {
+        "stack": "create:content_observer",
+        "weight": 100
+      },
+      {
+        "stack": "create:stockpile_switch",
+        "weight": 100
+      },
+      {
+        "stack": "create:mechanical_arm",
+        "weight": 100
+      },
+      {
+        "stack": "create:blaze_cake",
+        "weight": 500
+      },
+      {
+        "stack": "create:blaze_burner",
+        "weight": 100
+      },
+      {
+        "stack": "create:extendo_grip",
+        "weight": 100
+      },
+      {
+        "stack": "create_dd:integrated_mechanism",
+        "weight": 100
+      },
+      {
+        "stack": "create_dd:calculation_mechanism",
+        "weight": 100
+      },
+      {
+        "stack": "createaddition:tesla_coil",
+        "weight": 200
+      },
+      {
+        "stack": "create:modular_accumulator",
+        "weight": 300
+      },
+      {
+        "stack": "create_dd:sealed_mechanism",
+        "weight": 100
+      },
+      {
+        "stack": "create_dd:bronze_saw",
+        "weight": 100
+      },
+      {
+        "stack": "create_dd:bronze_drill",
+        "weight": 100
+      }
+    ]
+  }
+}

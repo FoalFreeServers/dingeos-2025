@@ -57,4 +57,3 @@ ServerEvents.tags('item', event => {
     ];
     plates.forEach(p => event.add('c:plates/' + p, '#c:' + p + '_plates'));
 });
-

@@ -118,6 +118,10 @@ ServerEvents.tags('block', event => {
 
 ServerEvents.tags('item', event => {
 
+	// Unifying Kelp
+	event.add('boice:kelp', 'minecraft:kelp')
+	event.add('boice:kelp', 'garnished:vermilion_kelp')
+
 // Add missing wood to stripped log tag
 
 	const logs = [
@@ -144,7 +148,7 @@ ServerEvents.tags('item', event => {
 	'willow',
 	'witch_hazel',
 	'zelkova',
-	'palo_verde',
+	'palo_verde'
 	];
 	// plates.forEach(p => event.add('c:plates/' + p, '#c:' + p + '_plates'));
 	logs.forEach(l => event.add('c:stripped_logs', 'biomeswevegone:stripped_' + l + '_log'));
@@ -209,9 +213,30 @@ ServerEvents.recipes(event => {
 	
 })
 
-// ████████ CREATE ADJUSTMENTS ████████████████████████████████████████████████████
+// ████████ CREATE ADJUSTMENTS & FIXES ████████████████████████████████████████████████████
 
 ServerEvents.recipes(event => {
+	
+	// Removal of Modded Motors
+	
+	event.remove({ output: 'create_dd:accelerator_motor' })
+	event.remove({ output: 'create_dd:kinetic_motor' })
+	
+	event.recipes.createMechanicalCrafting('2x create_dd:kinetic_motor', [
+	  ' UUUUU',
+	  'SGCCMN',
+	  'SGCCOP',
+	  ' UUUUU'
+	], {
+	  U: 'create:sturdy_sheet',
+	  S: 'create:shaft',
+	  G: 'create:large_cogwheel',
+	  C: 'create_dd:zinc_casing',
+	  M: 'create:precision_mechanism',
+	  N: 'create_dd:integrated_mechanism',
+	  O: 'create_dd:calculation_mechanism',
+	  P: 'create_dd:inductive_mechanism'
+	})
 	
 	// Blaze Cake Replacement Recipe
 	
@@ -234,10 +259,10 @@ ServerEvents.recipes(event => {
 	event.remove({ output: 'create_dd:spectral_ruby' })
 
 	event.recipes.createMixing('create_dd:spectral_ruby', [
-		'compressedblocks:compressed_amethyst_x2',
-		'minecraft:glowstone',
-		'minecraft:glowstone',
-		'minecraft:glowstone',
+		'compressedblocks:compressed_amethyst_x1',
+		'minecraft:glowstone_dust',
+		'minecraft:glowstone_dust',
+		'minecraft:glowstone_dust',
 		'betternether:nether_ruby'
 ])	
 	
@@ -253,7 +278,86 @@ ServerEvents.recipes(event => {
 		'minecraft:glow_berries',
 		'minecraft:glow_berries',
 		'minecraft:glow_berries'
-]).heated()
+	]).heated()
+
+	// Irromolding Recipe Change
+	event.remove({ output: 'create_unbreakable:irromolding' })
+
+	event.recipes.createMechanicalCrafting('create_unbreakable:irromolding', [
+	  'XAAAX',
+	  'ACDCA',
+	  'ADBDA',
+	  'ACDCA',
+	  'XAAAX'
+	], {
+	  A: 'create:brass_block',
+	  B: 'create_dd:mithril_block',
+	  C: 'create_dd:integrated_mechanism',
+	  D: 'compressedblocks:compressed_obsidian_x2',
+	  X: 'minecraft:air'
+	})
+	
+	// Ember Alloy Recipe Change
+	
+	event.remove({ output: 'create_dd:ember_alloy', input: 'minecraft:blaze_powder' })
+	event.recipes.createMixing('create_dd:ember_alloy', [
+	  'minecraft:charcoal',
+	  'minecraft:blaze_powder',
+	  'create:cinder_flour',
+	  'create:powdered_obsidian',
+	  'minecraft:nether_brick'
+	]).heated()
+
+	// High Yield Zinc Recipe
+	event.recipes.createMixing([
+	Fluid.of('molten_metals:molten_zinc',81000),
+	Item.of('6x minecraft:iron_nugget').withChance(0.75),
+	Item.of('6x minecraft:gold_nugget').withChance(0.75),
+	Item.of('6x create:zinc_nugget').withChance(0.75),
+	Item.of('6x molten_metals:slag')], [
+	  '4x create:crushed_raw_zinc',
+	  'garnished:salt_compound',
+	  'minecraft:redstone'
+	]).heated()
+
+	// High Yield Copper Recipe
+	event.recipes.createMixing([
+	Fluid.of('molten_metals:molten_copper',54000),
+	Item.of('2x molten_metals:slag')], [
+	  'create:crushed_raw_copper',
+	  'garnished:salt_compound',
+	  Fluid.of('minecraft:water',54000)
+	]).heated()
+
+	// High Yield Brass Recipe
+	
+	// event.remove({ fluid: 'molten_metals:molten_brass', type: 'create:mixing', fluid: 'molten_metals:molten_zinc', fluid: 'molten_metals:molten_copper' })
+	event.recipes.createMixing([
+	Fluid.of('molten_metals:molten_brass',54000), '3x create:brass_ingot'], [
+	  Fluid.of('molten_metals:molten_copper',36000),
+	  Fluid.of('molten_metals:molten_zinc',18000),
+	  '2x create_dd:tin_nugget'
+	]).heated()
+	
+	// High Yield Tin Recipe
+	event.recipes.createCompacting([
+	Fluid.of('molten_metals:molten_tin',36000),
+	Item.of('3x molten_metals:slag')], [
+	  '3x create:crushed_raw_tin',
+	  '2x #minecraft:coals',
+	  'create:limestone'
+	]).heated()
+	
+	// High Yield Silver Recipe
+	event.recipes.createCompacting([
+	Fluid.of('molten_metals:molten_silver',45000),
+	Item.of('3x molten_metals:slag'),
+	Item.of('3x createaddition:electrum_nugget').withChance(0.75),
+	], [
+	  '2x create:crushed_raw_silver',
+	  '2x garnished:salt_compound',
+	  'create:limestone'
+	]).heated()
 
 	// BetterX Ore Crushing Support
 	
@@ -275,7 +379,6 @@ ServerEvents.recipes(event => {
 		], 'betternether:nether_redstone_ore')
 	
 	// Track Alternative Recipe
-	
 	
 	event.recipes.createSequencedAssembly([ // start the recipe
 		 Item.of("create:track", 6)
@@ -374,6 +477,20 @@ ServerEvents.recipes(event => {
 		event.recipes.createFilling('create:incomplete_precision_mechanism', ['create:incomplete_precision_mechanism',Fluid.of('tconstruct:molten_brass', 4500)]),
 	]).transitionalItem('create:precision_mechanism').loops(5) // set the transitional item and the loops (amount of repetitions)
 
+	// Abstruse Mechanism Recipe Addition
+	const abstruse = "create_dd:incomplete_abstruse_mechanism"
+	
+	event.recipes.createSequencedAssembly([
+		Item.of("create_dd:abstruse_mechanism", 1)
+	], 'create_dd:shadow_steel_sheet', [
+		event.recipes.createDeploying(abstruse, [abstruse, 'create:cogwheel']),
+		event.recipes.createDeploying(abstruse, [abstruse,'create:large_cogwheel']),
+		event.recipes.createPressing(abstruse, abstruse),
+		event.recipes.createFilling(abstruse, [abstruse,Fluid.of('tconstruct:molten_amethyst_bronze', 18000)]),
+		event.recipes.createDeploying(abstruse, [abstruse, 'garnished:ethereal_compound']),
+		event.recipes.createFilling(abstruse, [abstruse,Fluid.of('tconstruct:molten_ender', 18000)]),
+	]).transitionalItem('create_dd:incomplete_abstruse_mechanism').loops(3)
+
 	// Andesite Alloy Sheet Conflict Resolve
 	
 	event.remove({ output: 'createdeco:andesite_sheet' })
@@ -389,7 +506,37 @@ ServerEvents.recipes(event => {
 	  'minecraft:iron_ingot',
 	  'createnuclear:coal_dust'
 	]).heated()
-
+	
+	// Unifying Steel
+	
+	event.remove({ fluid: 'createbigcannons:molten_steel', type: 'create:compacting' })
+	
+	event.recipes.createCompacting('createbigcannons:cast_iron_ingot', [
+	  'minecraft:iron_ingot',
+	  'createnuclear:coal_dust'
+	]).heated()
+	
+	event.recipes.createCompacting('create_dd:steel_ingot', [
+	  Fluid.of('molten_metals:molten_steel', 9000)
+	])
+	
+	event.remove({ input: 'createnuclear:coal_dust', type: 'create:mixing' })
+	
+	event.stonecutting('create_dd:steel_ingot', 'createnuclear:steel_ingot')
+	event.stonecutting('createnuclear:steel_ingot', 'create_dd:steel_ingot')
+	
+	event.recipes.createMixing(Fluid.of('molten_metals:molten_steel', 36000), [
+	  '2x create:limestone',
+	  'create_dd:industrial_iron_ingot',
+	  Fluid.of('molten_metals:molten_iron', 18000),
+	  Fluid.of('minecraft:lava', 18000)
+	]).heated()
+	
+	// Adds missing log -> stripped log recipes to Mechanical Saw
+	
+	event.recipes.createCutting('vinery:stripped_dark_cherry_log', [
+	  'vinery:dark_cherry_log'
+	])
 
 // ████████ AE2 ADJUSTMENTS ████████████████████████████████████████████████████
 
@@ -407,9 +554,41 @@ ServerEvents.recipes(event => {
 	)
 })
 
-// ████████ UNIVERSAL ONION RECIPES ████████████████████████████████████████████████████
+// ████████ UNIVERSAL RECIPES ████████████████████████████████████████████████████
 
-// c:/onion
+	// tagging tconstruct glass with chipped glass tags
+
+const glass = [
+	'white',
+	'orange',
+	'magenta',
+	'light_blue',
+	'yellow',
+	'lime',
+	'pink',
+	'gray',
+	'light_gray',
+	'cyan',
+	'purple',
+	'blue',
+	'brown',
+	'green',
+	'red',
+	'black'
+	];
+
+ // 'chipped:' + g + '_stained_glass'
+ // 'tconstruct:' + g + '_clear_stained_glass'
+
+ServerEvents.tags('item', event => {
+	glass.forEach(g => event.add('chipped:' + g + '_stained_glass', 'tconstruct:' + g + '_clear_stained_glass'))
+	glass.forEach(g => event.add('chipped:' + g + '_stained_glass_pane', 'tconstruct:' + g + '_clear_stained_glass_pane'))
+	event.add('chipped:glass', 'tconstruct:clear_glass');
+	event.add('chipped:glass_pane', 'tconstruct:clear_glass_pane');
+
+})
+
+	// c:/onion
 
 ServerEvents.tags('item', event => {
 	event.add('c:onion', 'farmersdelight:onion')
@@ -428,4 +607,337 @@ ServerEvents.recipes(event => {
 	  '#c:onion'         // Arg 3: the item to replace it with
 	  // Note: tagged fluid ingredients do not work on Fabric, but tagged items do.
 	)
+	// kelp replacement with boice:kelp tag
+	event.replaceInput(
+	  { input: 'minecraft:kelp' }, // Arg 1: the filter
+	  'minecraft:kelp',            // Arg 2: the item to replace
+	  '#boice:kelp'         // Arg 3: the item to replace it with
+	  // Note: tagged fluid ingredients do not work on Fabric, but tagged items do.
+	)
+	
+	event.remove({ type: 'minecraft:smelting', input: 'garnished:vermilion_kelp', output: 'minecraft:dried_kelp' })
+	event.remove({ type: 'minecraft:campfire', input: 'garnished:vermilion_kelp', output: 'minecraft:dried_kelp' })
+	event.remove({ type: 'minecraft:smoking', input: 'garnished:vermilion_kelp', output: 'minecraft:dried_kelp' })
+	event.smelting('minecraft:dried_kelp', 'minecraft:kelp')
 })
+
+ServerEvents.tags('item', event => {
+	event.add('c:onion', 'farmersdelight:onion')
+
+})
+
+// ████████ MAGITEK MECHS RECIPE ADJUSTMENTS ██████████████████████████████████████████████████████████████
+
+ServerEvents.recipes(event => {
+	// Magicite Energy Core
+event.remove({ output: 'mtmechs:magicite_item' })
+
+event.shaped(
+  Item.of('mtmechs:magicite_item'), // arg 1: output
+  [
+    'ABA',
+    'BCB', // arg 2: the shape (array of strings)
+    'ABA'
+  ],
+  {
+    A: 'tconstruct:cobalt_ingot',
+    B: 'compressedblocks:compressed_lapis_x1',  //arg 3: the mapping object
+	C: 'minecraft:diamond_block'
+  }
+)
+
+	// New Lapis Alloy Recipe
+
+event.remove({ input: 'create_dd:tin_nugget', output: 'create_dd:lapis_alloy' })
+event.recipes.createMixing('create_dd:lapis_alloy', [
+  'minecraft:lapis_lazuli',
+  'minecraft:lapis_lazuli',
+  'minecraft:lapis_lazuli',
+  'minecraft:lapis_lazuli',
+  'create_dd:tin_nugget',
+  'create:powdered_obsidian'
+]).heated()
+
+	// Tunnel Mecha
+
+event.remove({ output: 'mtmechs:ta_arm_item' })
+event.shaped(
+  Item.of('mtmechs:ta_arm_item'), // arg 1: output
+  [
+    'A  ',
+    'ABC', // arg 2: the shape (array of strings)
+    'ABC'
+  ],
+  {
+    A: 'create_dd:lapis_alloy',
+    B: 'mtmechs:iron_gear_item',  //arg 3: the mapping object
+	C: 'create:mechanical_drill'
+  }
+)
+
+event.remove({ output: 'mtmechs:ta_stack_item' })
+event.shaped(
+  Item.of('mtmechs:ta_stack_item'), // arg 1: output
+  [
+    'A A',
+    ' BA', // arg 2: the shape (array of strings)
+    ' AC'
+  ],
+  {
+    A: 'minecraft:iron_ingot',
+    B: 'create_dd:lapis_alloy_block',  //arg 3: the mapping object
+	C: 'minecraft:blast_furnace'
+  }
+)
+
+event.remove({ output: 'mtmechs:ta_chassis_item' })
+event.shaped(
+  Item.of('mtmechs:ta_chassis_item'), // arg 1: output
+  [
+    'A A',
+    'BCB', // arg 2: the shape (array of strings)
+    'DED'
+  ],
+  {
+    A: 'minecraft:iron_ingot',
+    B: 'create_dd:lapis_alloy_block',  //arg 3: the mapping object
+	C: '#create:seats',
+	D: 'create:large_cogwheel',
+	E: 'minecraft:redstone_block'
+  }
+)
+
+	// Proto Mecha
+
+event.remove({ output: 'mtmechs:pa_whole_item' })
+event.shaped(
+  Item.of('mtmechs:pa_whole_item'), // arg 1: output
+  [
+    'ABA',
+    'CDC', // arg 2: the shape (array of strings)
+    'E E'
+  ],
+  {
+    A: 'create_dd:overcharged_alloy_block',
+    B: 'mtmechs:iron_gear_item',  //arg 3: the mapping object
+	C: 'create_dd:abstruse_mechanism',
+	D: 'mtmechs:pa_chassis_item',
+	E: 'mtmechs:pa_leg_item',
+  }
+)
+
+event.remove({ output: 'mtmechs:pa_chassis_item' })
+event.shaped(
+  Item.of('mtmechs:pa_chassis_item'), // arg 1: output
+  [
+    'ABA',
+    'DCD', // arg 2: the shape (array of strings)
+    'FEF'
+  ],
+  {
+    A: 'minecraft:iron_ingot',
+    B: 'create_dd:lapis_alloy_block',  //arg 3: the mapping object
+	C: '#create:seats',
+	D: 'create_dd:overcharged_alloy_block',
+	E: 'create_dd:abstruse_mechanism',
+	F: 'createnuclear:uranium_rod'
+  }
+)
+
+event.remove({ output: 'mtmechs:pa_leg_item' })
+event.shaped(
+  Item.of('mtmechs:pa_leg_item'), // arg 1: output
+  [
+    ' A ',
+    ' A ', // arg 2: the shape (array of strings)
+    'ABA'
+  ],
+  {
+    A: 'create_dd:lapis_alloy',
+    B: 'create_dd:refined_radiance_block'
+  }
+)
+
+	// Magitek Mecha
+
+event.remove({ output: 'mtmechs:ma_arm_item' })
+event.shaped(
+  Item.of('mtmechs:ma_arm_item'), // arg 1: output
+  [
+    '  A',
+    'ABC', // arg 2: the shape (array of strings)
+    'A  '
+  ],
+  {
+    A: 'create_dd:steel_ingot',
+    B: 'create:brass_ingot',  //arg 3: the mapping object
+	C: 'create:zinc_block'
+  }
+)
+
+event.remove({ output: 'mtmechs:ma_stack_item' })
+event.shaped(
+  Item.of('mtmechs:ma_stack_item'), // arg 1: output
+  [
+    ' A ',
+    'ABA', // arg 2: the shape (array of strings)
+    'AAA'
+  ],
+  {
+    A: 'create_dd:steel_ingot',
+    B: 'minecraft:furnace'
+  }
+)
+
+event.remove({ output: 'mtmechs:ma_chassis_item' })
+event.shaped(
+  Item.of('mtmechs:ma_chassis_item'), // arg 1: output
+  [
+    'A A',
+    'BCB', // arg 2: the shape (array of strings)
+    'DED'
+  ],
+  {
+    A: 'create:brass_ingot',
+    B: 'create:zinc_block',  //arg 3: the mapping object
+	C: '#create:seats',
+	D: 'create_dd:steel_sheet',
+	E: 'mtmechs:iron_gear_item'
+  }
+)
+
+event.remove({ output: 'mtmechs:ma_leg_item' })
+event.shaped(
+  Item.of('mtmechs:ma_leg_item'), // arg 1: output
+  [
+    ' A ',
+    ' A ', // arg 2: the shape (array of strings)
+    'BCB'
+  ],
+  {
+    A: 'create_dd:steel_ingot',
+    B: 'create:brass_ingot',  //arg 3: the mapping object
+	C: 'create:zinc_block'
+  }
+)
+
+
+})
+
+
+// ████████ LOOTBAG RECIPES AND ADDITIONS TO RECIPES ████████████████████████████████████████████████████
+
+/* 
+const createbag = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}');
+
+ServerEvents.recipes(event => {
+	event.shapeless(
+	  Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}'), // arg 1: output
+	  [
+		createbag,
+		createbag,
+		createbag
+	  ]
+	)
+})
+*/
+const createbag = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}').strongNBT();
+
+ServerEvents.recipes(event => {
+    event.shapeless(
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}'), // arg 1: output
+      [
+        createbag,
+        createbag,
+        createbag
+      ]
+    )
+})
+
+
+
+	// 
+
+
+	
+ServerEvents.tags('block', event => {
+	// Add missing nether ore to the c:nether_ores tag
+	event.add('c:nether_ores', 'tconstruct:cobalt_ore')
+})
+
+	// Loot Bag drop from ores
+
+LootJS.modifiers((event) => {
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.005)
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:14675181,Loot:"loot_bags:loot_bags/overworld_ores_lootbag",Name:"Lootbag (Overworld Ores)",Type:"COMMON"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0));
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.01)
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.002)
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.0006)
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0));
+    event
+        .addBlockLootModifier("#c:nether_ores")
+        .randomChance(0.01)
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:9604210,Loot:"loot_bags:loot_bags/nether_ores_lootbag",Name:"Lootbag (Nether Ores)",Type:"COMMON"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0));
+		
+})
+
+
+// ████████ MISCELLANEOUS RECIPES ████████████████████████████████████████████████████
+
+	// Fix lack of recipe, not sure why it doesnt appear in JEI
+
+ServerEvents.recipes(event => {
+	event.recipes.createMixing('garnished:ender_jelly', [
+	  'garnished:salt_compound',
+	  '#c:ender_dusts',
+	  '#c:ender_dusts',
+	  '#c:ender_dusts',
+	  Fluid.of('minecraft:water', 40500)
+	]).heated()
+
+	// Copycats Amount Adjustments
+	// ['copycats:copycat_wall', 'copycats:copycat_slope', 'copycats:copycat_vertical_slope', 'copycats:copycat_block', 'copycats:copycat_fence', 'copycats:copycat_fence_gate', 'copycats:copycat_slab', 'copycats:copycat_stairs', 'copycats:copycat_vertical_stairs']
+
+	event.remove({ output: ['copycats:copycat_wall', 'copycats:copycat_slope', 'copycats:copycat_vertical_slope', 'copycats:copycat_block', 'copycats:copycat_fence', 'copycats:copycat_fence_gate', 'copycats:copycat_slab', 'copycats:copycat_stairs', 'copycats:copycat_vertical_stairs'] })
+	event.stonecutting('4x copycats:copycat_wall', 'create:zinc_ingot')
+	event.stonecutting('4x copycats:copycat_slope', 'create:zinc_ingot')
+	event.stonecutting('4x copycats:copycat_vertical_slope', 'create:zinc_ingot')
+	event.stonecutting('3x copycats:copycat_block', 'create:zinc_ingot')
+	event.stonecutting('4x copycats:copycat_fence', 'create:zinc_ingot')
+	event.stonecutting('2x copycats:copycat_fence_gate', 'create:zinc_ingot')
+	event.stonecutting('6x copycats:copycat_slab', 'create:zinc_ingot')
+	event.stonecutting('3x copycats:copycat_stairs', 'create:zinc_ingot')
+	event.stonecutting('3x copycats:copycat_vertical_stairs', 'create:zinc_ingot')
+});
+
+// ████████ CUSTOM DROPS FOR BLOCKS VIA LOOTJS ███████████████████████████████████████
+
+
+
+
+// ████████ ROLL THE DICE COMMAND ████████████████████████████████████████████████████
+

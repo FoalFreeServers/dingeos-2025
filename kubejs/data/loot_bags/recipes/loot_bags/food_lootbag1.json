@@ -1,0 +1,59 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Food 1)",
+  "color": "#EE50E7",
+  "rarity": "EPIC",
+  "output": {
+    "rolls": 28,
+    "entries": [
+      {
+        "stack": "farmersdelight:ham",
+        "weight": 26
+      },
+      {
+        "stack": "farmersdelight:barbecue_stick",
+        "weight": 32
+      },
+      {
+        "stack": "farmersdelight:dumplings",
+        "weight": 24
+      },
+      {
+        "stack": "farmersdelight:pumpkin_soup",
+        "weight": 4
+      },
+      {
+        "stack": "farmersdelight:sweet_berry_cookie",
+        "weight": 16
+      },
+      {
+        "stack": "garnished:garnished_meal",
+        "weight": 5
+      },
+      {
+        "stack": "garnished:brownie_walnuts",
+        "weight": 5
+      },
+      {
+        "stack": "brewery:sausage",
+        "weight": 3
+      },
+      {
+        "stack": "farmersdelight:cooked_rice",
+        "weight": 24
+      },
+      {
+        "stack": "minecraft:melon_slice",
+        "weight": 56
+      },
+      {
+        "stack": "minecraft:cooked_mutton",
+        "weight": 12
+      },
+      {
+        "stack": "farmersdelight:kelp_roll",
+        "weight": 2
+      }
+    ]
+  }
+}

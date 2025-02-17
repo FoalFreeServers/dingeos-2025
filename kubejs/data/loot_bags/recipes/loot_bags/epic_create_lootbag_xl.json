@@ -1,0 +1,67 @@
+{
+  "type": "lootbags:loot",
+  "name": "Epic XL Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "EPIC",
+  "output": {
+    "rolls": 40,
+    "entries": [
+      {
+        "stack": "create:mechanical_arm",
+        "weight": 400
+      },
+      {
+        "stack": "create:blaze_cake",
+        "weight": 500
+      },
+      {
+        "stack": "create:blaze_burner",
+        "weight": 300
+      },
+      {
+        "stack": "create:extendo_grip",
+        "weight": 35
+      },
+      {
+        "stack": "create_dd:integrated_mechanism",
+        "weight": 120
+      },
+      {
+        "stack": "create:railway_casing",
+        "weight": 600
+      },
+      {
+        "stack": "create_dd:calculation_mechanism",
+        "weight": 150
+      },
+      {
+        "stack": "createaddition:tesla_coil",
+        "weight": 100
+      },
+      {
+        "stack": "create:modular_accumulator",
+        "weight": 800
+      },
+      {
+        "stack": "create_dd:sealed_mechanism",
+        "weight": 150
+      },
+      {
+        "stack": "create_dd:bronze_saw",
+        "weight": 200
+      },
+      {
+        "stack": "create:wand_of_symmetry",
+        "weight": 50
+      },
+      {
+        "stack": "create:rotation_speed_controller",
+        "weight": 250
+      },
+      {
+        "stack": "create_dd:bronze_drill",
+        "weight": 500
+      }
+    ]
+  }
+}

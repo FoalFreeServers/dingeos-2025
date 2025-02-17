@@ -1,0 +1,71 @@
+{
+  "type": "lootbags:loot",
+  "name": "Legendary XL Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "LEGENDARY",
+  "output": {
+    "rolls": 64,
+    "entries": [
+      {
+        "stack": "create:creative_blaze_cake",
+        "weight": 200
+      },
+      {
+        "stack": "create_dd:kinetic_motor",
+        "weight": 550
+      },
+      {
+        "stack": "create_jetpack:netherite_jetpack",
+        "weight": 150
+      },
+      {
+        "stack": "create:netherite_diving_helmet",
+        "weight": 150
+      },
+      {
+        "stack": "create:netherite_diving_boots",
+        "weight": 100
+      },
+      {
+        "stack": "create_dd:mithril_ingot",
+        "weight": 8200
+      },
+      {
+        "stack": "create_dd:forest_ravager",
+        "weight": 20
+      },
+      {
+        "stack": "create_dd:radiant_drill",
+        "weight": 700
+      },
+      {
+        "stack": "create_dd:shadow_drill",
+        "weight": 500
+      },
+      {
+        "stack": "create_dd:refined_radiance_casing",
+        "weight": 500
+      },
+      {
+        "stack": "create_dd:shadow_steel_casing",
+        "weight": 500
+      },
+      {
+        "stack": "create:netherite_backtank",
+        "weight": 150
+      },
+      {
+        "stack": "create_unbreakable:irromolding",
+        "weight": 25
+      },
+      {
+        "stack": "createaddition:electrum_amulet",
+        "weight": 50
+      },
+      {
+        "stack": "create_dd:shimmer_bucket",
+        "weight": 200
+      }
+    ]
+  }
+}

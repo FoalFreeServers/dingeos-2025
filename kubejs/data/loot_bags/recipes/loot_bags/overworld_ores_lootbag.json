@@ -1,0 +1,63 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Overworld Ores)",
+  "color": "#928C72",
+  "rarity": "COMMON",
+  "output": {
+    "rolls": 84,
+    "entries": [
+      {
+        "stack": "minecraft:diamond",
+        "weight": 1
+      },
+      {
+        "stack": "minecraft:redstone",
+        "weight": 7
+      },
+      {
+        "stack": "minecraft:lapis_lazuli",
+        "weight": 6
+      },
+      {
+        "stack": "create:crushed_raw_gold",
+        "weight": 8
+      },
+      {
+        "stack": "create:crushed_raw_iron",
+        "weight": 12
+      },
+      {
+        "stack": "create:crushed_raw_copper",
+        "weight": 24
+      },
+      {
+        "stack": "create:crushed_raw_zinc",
+        "weight": 18
+      },
+      {
+        "stack": "create:crushed_raw_silver",
+        "weight": 12
+      },
+      {
+        "stack": "create:crushed_raw_tin",
+        "weight": 24
+      },
+      {
+        "stack": "minecraft:emerald",
+        "weight": 3
+      },
+      {
+        "stack": "createnuclear:raw_uranium",
+        "weight": 5
+      },
+      {
+        "stack": "createnuclear:raw_lead",
+        "weight": 8
+      },
+      {
+        "stack": "minecraft:coal",
+        "weight": 16
+      }
+    ]
+  }
+}

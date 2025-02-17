@@ -1,0 +1,47 @@
+{
+  "type": "lootbags:loot",
+  "name": "XL Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "COMMON",
+  "output": {
+    "rolls": 148,
+    "entries": [
+      {
+        "stack": "create:shaft",
+        "weight": 124
+      },
+      {
+        "stack": "create:cogwheel",
+        "weight": 72
+      },
+      {
+        "stack": "create:large_cogwheel",
+        "weight": 64
+      },
+      {
+        "stack": "create:belt_connector",
+        "weight": 52
+      },
+      {
+        "stack": "create:andesite_alloy",
+        "weight": 78
+      },
+      {
+        "stack": "create:fluid_pipe",
+        "weight": 32
+      },
+      {
+        "stack": "create:andesite_casing",
+        "weight": 46
+      },
+      {
+        "stack": "create:chute",
+        "weight": 24
+      },
+      {
+        "stack": "create:gearbox",
+        "weight": 21
+      }
+    ]
+  }
+}

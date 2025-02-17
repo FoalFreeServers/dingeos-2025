@@ -1,0 +1,63 @@
+{
+  "type": "lootbags:loot",
+  "name": "Rare XL Lootbag (Create)",
+  "color": "#BA7D26",
+  "rarity": "RARE",
+  "output": {
+    "rolls": 62,
+    "entries": [
+      {
+        "stack": "create:crushing_wheel",
+        "weight": 100
+      },
+      {
+        "stack": "create:blaze_cake_base",
+        "weight": 180
+      },
+      {
+        "stack": "create:electron_tube",
+        "weight": 100
+      },
+      {
+        "stack": "create:windmill_bearing",
+        "weight": 100
+      },
+      {
+        "stack": "create:mechanical_pump",
+        "weight": 100
+      },
+      {
+        "stack": "createaddition:rolling_mill",
+        "weight": 100
+      },
+      {
+        "stack": "create:mechanical_press",
+        "weight": 100
+      },
+      {
+        "stack": "create:stressometer",
+        "weight": 100
+      },
+      {
+        "stack": "create:white_sail",
+        "weight": 1250
+      },
+      {
+        "stack": "create:brass_hand",
+        "weight": 100
+      },
+      {
+        "stack": "create:precision_mechanism",
+        "weight": 40
+      },
+      {
+        "stack": "create:mechanical_mixer",
+        "weight": 100
+      },
+      {
+        "stack": "create:crafter_slot_cover",
+        "weight": 170
+      }
+    ]
+  }
+}

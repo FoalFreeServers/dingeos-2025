@@ -1,0 +1,51 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Copycats)",
+  "color": "#DFECED",
+  "rarity": "COMMON",
+  "output": {
+    "rolls": 54,
+    "entries": [
+      {
+        "stack": "copycats:copycat_block",
+        "weight": 3
+      },
+      {
+        "stack": "copycats:copycat_beam",
+        "weight": 4
+      },
+      {
+        "stack": "copycats:copycat_stairs",
+        "weight": 16
+      },
+      {
+        "stack": "copycats:copycat_slope_layer",
+        "weight": 7
+      },
+      {
+        "stack": "copycats:copycat_wall",
+        "weight": 6
+      },
+      {
+        "stack": "copycats:copycat_slab",
+        "weight": 12
+      },
+      {
+        "stack": "copycats:copycat_ladder",
+        "weight": 2
+      },
+      {
+        "stack": "copycats:copycat_slice",
+        "weight": 4
+      },
+      {
+        "stack": "copycats:copycat_fence",
+        "weight": 8
+      },
+      {
+        "stack": "copycats:copycat_slope",
+        "weight": 16
+      }
+    ]
+  }
+}

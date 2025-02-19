@@ -308,56 +308,7 @@ ServerEvents.recipes(event => {
 	  'minecraft:nether_brick'
 	]).heated()
 
-	// High Yield Zinc Recipe
-	event.recipes.createMixing([
-	Fluid.of('molten_metals:molten_zinc',81000),
-	Item.of('6x minecraft:iron_nugget').withChance(0.75),
-	Item.of('6x minecraft:gold_nugget').withChance(0.75),
-	Item.of('6x create:zinc_nugget').withChance(0.75),
-	Item.of('6x molten_metals:slag')], [
-	  '4x create:crushed_raw_zinc',
-	  'garnished:salt_compound',
-	  'minecraft:redstone'
-	]).heated()
-
-	// High Yield Copper Recipe
-	event.recipes.createMixing([
-	Fluid.of('molten_metals:molten_copper',54000),
-	Item.of('2x molten_metals:slag')], [
-	  'create:crushed_raw_copper',
-	  'garnished:salt_compound',
-	  Fluid.of('minecraft:water',54000)
-	]).heated()
-
-	// High Yield Brass Recipe
-	
-	// event.remove({ fluid: 'molten_metals:molten_brass', type: 'create:mixing', fluid: 'molten_metals:molten_zinc', fluid: 'molten_metals:molten_copper' })
-	event.recipes.createMixing([
-	Fluid.of('molten_metals:molten_brass',54000), '3x create:brass_ingot'], [
-	  Fluid.of('molten_metals:molten_copper',36000),
-	  Fluid.of('molten_metals:molten_zinc',18000),
-	  '2x create_dd:tin_nugget'
-	]).heated()
-	
-	// High Yield Tin Recipe
-	event.recipes.createCompacting([
-	Fluid.of('molten_metals:molten_tin',36000),
-	Item.of('3x molten_metals:slag')], [
-	  '3x create:crushed_raw_tin',
-	  '2x #minecraft:coals',
-	  'create:limestone'
-	]).heated()
-	
-	// High Yield Silver Recipe
-	event.recipes.createCompacting([
-	Fluid.of('molten_metals:molten_silver',45000),
-	Item.of('3x molten_metals:slag'),
-	Item.of('3x createaddition:electrum_nugget').withChance(0.75),
-	], [
-	  '2x create:crushed_raw_silver',
-	  '2x garnished:salt_compound',
-	  'create:limestone'
-	]).heated()
+	// -------------------------------------------- Moved High Yield Recipes
 
 	// BetterX Ore Crushing Support
 	
@@ -505,31 +456,6 @@ ServerEvents.recipes(event => {
 	event.recipes.createCompacting('createbigcannons:cast_iron_ingot', [
 	  'minecraft:iron_ingot',
 	  'createnuclear:coal_dust'
-	]).heated()
-	
-	// Unifying Steel
-	
-	event.remove({ fluid: 'createbigcannons:molten_steel', type: 'create:compacting' })
-	
-	event.recipes.createCompacting('createbigcannons:cast_iron_ingot', [
-	  'minecraft:iron_ingot',
-	  'createnuclear:coal_dust'
-	]).heated()
-	
-	event.recipes.createCompacting('create_dd:steel_ingot', [
-	  Fluid.of('molten_metals:molten_steel', 9000)
-	])
-	
-	event.remove({ input: 'createnuclear:coal_dust', type: 'create:mixing' })
-	
-	event.stonecutting('create_dd:steel_ingot', 'createnuclear:steel_ingot')
-	event.stonecutting('createnuclear:steel_ingot', 'create_dd:steel_ingot')
-	
-	event.recipes.createMixing(Fluid.of('molten_metals:molten_steel', 36000), [
-	  '2x create:limestone',
-	  'create_dd:industrial_iron_ingot',
-	  Fluid.of('molten_metals:molten_iron', 18000),
-	  Fluid.of('minecraft:lava', 18000)
 	]).heated()
 	
 	// Adds missing log -> stripped log recipes to Mechanical Saw
@@ -820,12 +746,13 @@ event.shaped(
 	C: 'create:zinc_block'
   }
 )
-
-
 })
 
 
 // ████████ LOOTBAG RECIPES AND ADDITIONS TO RECIPES ████████████████████████████████████████████████████
+
+
+// Crafting 3 lootbags into better rarity
 
 /* 
 const createbag = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}');
@@ -841,24 +768,75 @@ ServerEvents.recipes(event => {
 	)
 })
 */
-const createbag = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}').strongNBT();
+
+// 3 Common -> 1 Rare Lootbag
+const createbagc = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}').strongNBT();
 
 ServerEvents.recipes(event => {
     event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}'), // arg 1: output
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'), // arg 1: output
       [
-        createbag,
-        createbag,
-        createbag
+        createbagc,
+        createbagc,
+        createbagc
+      ]
+    )
+
+// 3 Rare -> 1 Epic Lootbag
+const createbagr = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}').strongNBT();
+    event.shapeless(
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'), // arg 1: output
+      [
+        createbagr,
+        createbagr,
+        createbagr
+      ]
+    )
+
+// 3 Epic -> 1 Legendary Lootbag
+const createbage = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}').strongNBT();
+    event.shapeless(
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag",Name:"Legendary Lootbag (Create)",Type:"LEGENDARY"}'), // arg 1: output
+      [
+        createbage,
+        createbage,
+        createbage
+      ]
+    )
+	
+// 3 Common -> 1 Rare Lootbag (XL)
+const createbagcxl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}').strongNBT();
+    event.shapeless(
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}'), // arg 1: output
+      [
+        createbagcxl,
+        createbagcxl,
+        createbagcxl
+      ]
+    )
+
+// 3 Rare -> 1 Epic Lootbag (XL)
+const createbagrxl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}').strongNBT();
+    event.shapeless(
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}'), // arg 1: output
+      [
+        createbagrxl,
+        createbagrxl,
+        createbagrxl
+      ]
+    )
+	
+// 3 Epic -> 1 Legendary Lootbag (XL)
+const createbagexl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}').strongNBT();
+    event.shapeless(
+      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag_xl",Name:"Legendary XL Lootbag (Create)",Type:"LEGENDARY"}'), // arg 1: output
+      [
+        createbagexl,
+        createbagexl,
+        createbagexl
       ]
     )
 })
-
-
-
-	// 
-
-
 	
 ServerEvents.tags('block', event => {
 	// Add missing nether ore to the c:nether_ores tag
@@ -872,36 +850,101 @@ LootJS.modifiers((event) => {
         .addBlockLootModifier("#c:ores")
 		.anyDimension("minecraft:overworld")
         .randomChance(0.005)
+        .weatherCheck({
+            raining: false,
+        })
         .addLoot(Item.of('lootbags:loot_bag', '{Color:14675181,Loot:"loot_bags:loot_bags/overworld_ores_lootbag",Name:"Lootbag (Overworld Ores)",Type:"COMMON"}'))
 		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0));
-    event
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+    
+		// COMMON LOOTBAG
+	event
         .addBlockLootModifier("#c:ores")
 		.anyDimension("minecraft:overworld")
         .randomChance(0.01)
+        .weatherCheck({
+            raining: false,
+			thundering: false
+        })
         .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}'))
 		.triggerLightningStrike(false)
 		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+		
+		// RARE LOOTBAG
     event
         .addBlockLootModifier("#c:ores")
 		.anyDimension("minecraft:overworld")
         .randomChance(0.002)
+        .weatherCheck({
+            raining: false,
+			thundering: false
+        })
         .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'))
 		.triggerLightningStrike(false)
 		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+		
+		// EPIC LOOTBAG
     event
         .addBlockLootModifier("#c:ores")
 		.anyDimension("minecraft:overworld")
         .randomChance(0.0006)
+        .weatherCheck({
+            raining: false,
+			thundering: false
+        })
         .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'))
 		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0));
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+		
+		// NETHER ORES LOOTBAG
     event
         .addBlockLootModifier("#c:nether_ores")
         .randomChance(0.01)
         .addLoot(Item.of('lootbags:loot_bag', '{Color:9604210,Loot:"loot_bags:loot_bags/nether_ores_lootbag",Name:"Lootbag (Nether Ores)",Type:"COMMON"}'))
 		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0));
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+		
+		// XL COMMON LOOTBAG
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.025)
+		.dropExperience(50)
+        .weatherCheck({
+            raining: true,
+			thundering:true
+        })
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+		
+		// XL RARE LOOTBAG
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.01)
+		.dropExperience(300)
+        .weatherCheck({
+            raining: true,
+			thundering:true
+        })
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
+		
+		// XL EPIC LOOTBAG
+    event
+        .addBlockLootModifier("#c:ores")
+		.anyDimension("minecraft:overworld")
+        .randomChance(0.0035)
+		.dropExperience(700)
+        .weatherCheck({
+            raining: true,
+			thundering:true
+        })
+        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'))
+		.triggerLightningStrike(false)
+		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
 		
 })
 
@@ -933,11 +976,3 @@ ServerEvents.recipes(event => {
 	event.stonecutting('3x copycats:copycat_stairs', 'create:zinc_ingot')
 	event.stonecutting('3x copycats:copycat_vertical_stairs', 'create:zinc_ingot')
 });
-
-// ████████ CUSTOM DROPS FOR BLOCKS VIA LOOTJS ███████████████████████████████████████
-
-
-
-
-// ████████ ROLL THE DICE COMMAND ████████████████████████████████████████████████████
-

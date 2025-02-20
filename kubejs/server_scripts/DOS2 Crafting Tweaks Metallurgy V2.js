@@ -1,3 +1,19 @@
+ServerEvents.tags('item',event => {
+	
+	event.remove('molten_metals:meltable_raw_copper', 'create:crushed_raw_copper')
+
+	event.remove('molten_metals:meltable_raw_iron', 'create:crushed_raw_iron')
+	
+	event.remove('molten_metals:meltable_raw_gold', 'create:crushed_raw_gold')
+	
+	event.remove('molten_metals:meltable_raw_silver', 'create:crushed_raw_silver')
+	
+	event.remove('molten_metals:meltable_raw_tin', 'create:crushed_raw_tin')
+	
+	event.remove('molten_metals:meltable_raw_zinc', 'create:crushed_raw_zinc')
+})
+
+
 ServerEvents.recipes(event => {
 
 // ████████ CREATE METALLURGY, ADJUSTMENTS & FIXES ████████████████████████████████████████████████████
@@ -6,9 +22,10 @@ ServerEvents.recipes(event => {
 	// BRASS SECTION ----------------------------------------------------------------------------------
 
 	// High Yield Brass Recipe - Confirmed IG
-	event.remove({ fluid: 'molten_metals:molten_brass', type: 'create:mixing', fluid: 'molten_metals:molten_zinc', fluid: 'molten_metals:molten_copper' })
+	event.remove({ output: 'molten_metals:molten_brass', type: 'create:mixing', input: 'molten_metals:molten_zinc', input: 'molten_metals:molten_copper' })
 	event.recipes.createMixing([
-	  Fluid.of('molten_metals:molten_brass',81000)], [
+	  Fluid.of('molten_metals:molten_brass',81000)
+	  ], [
 	  Fluid.of('molten_metals:molten_copper',36000),
 	  Fluid.of('molten_metals:molten_zinc',18000),
 	  '2x create_dd:tin_nugget'
@@ -17,20 +34,25 @@ ServerEvents.recipes(event => {
 	// BRONZE SECTION ---------------------------------------------------------------------------------
 	
 	// High Yield Bronze Recipe
-	event.remove({ fluid: 'molten_metals:molten_bronze', type: 'create:mixing', fluid: 'molten_metals:molten_tin', fluid: 'molten_metals:molten_copper' })
+	event.remove({ output: 'molten_metals:molten_bronze', type: 'create:mixing', input: 'create:crushed_raw_tin', input: 'create:crushed_raw_copper' })
+	event.remove({ output: 'molten_metals:molten_bronze', type: 'create:mixing', input: 'molten_metals:molten_tin', input: 'molten_metals:molten_copper' })
+	event.remove({ output: 'createbigcannons:molten_bronze', type: 'create:mixing', input: 'create:crushed_raw_tin', input: 'create:crushed_raw_copper' })
+	event.remove({ output: 'createbigcannons:molten_bronze', type: 'create:mixing', input: 'molten_metals:molten_tin', input: 'molten_metals:molten_copper' })
 	event.recipes.createCompacting([
-	  Fluid.of('molten_metals:molten_bronze',63000)], [
+	  Fluid.of('molten_metals:molten_bronze',63000)
+	  ], [
 	  Fluid.of('molten_metals:molten_copper',36000),
 	  Fluid.of('molten_metals:molten_tin',9000),
 	  Item.of('4x create:zinc_nugget'),
-	  Item.of('createaddition:electrum_nugget'),
+	  Item.of('createaddition:electrum_nugget')
 	]).superheated()
 	
 	// Normal Bronze Recipe
 	event.recipes.createCompacting([
-	  Fluid.of('molten_metals:molten_bronze',36000)], [
+	  Fluid.of('molten_metals:molten_bronze',27000),
+	  Item.of('molten_metals:slag')], [
 	  Fluid.of('molten_metals:molten_copper',27000),
-	  Fluid.of('molten_metals:molten_tin',9000),
+	  Fluid.of('molten_metals:molten_tin',9000)
 	]).heated()
 
 	// COPPER SECTION ---------------------------------------------------------------------------------
@@ -95,9 +117,23 @@ ServerEvents.recipes(event => {
 		'molten_metals:molten_electrum_ingot_mold'
 	])
 	
+	// GOLD SECTION --------------------------------------------------------------------------------
+
+	// High Yield Gold Recipe
+	event.recipes.createMixing([
+	Fluid.of('molten_metals:molten_gold',63000),
+	Item.of('3x molten_metals:slag'),
+	Item.of('3x createaddition:electrum_nugget').withChance(0.75),
+	], [
+	  '3x create:crushed_raw_gold',
+	  '2x garnished:salt_compound',
+	  'minecraft:lapis_lazuli'
+	]).heated()
+	
 	// IRON SECTION -------------------------------------------------------------------------------------
 	
 	// High Yield Iron Recipe - Confirmed IG
+	event.remove({ output: 'molten_metals:molten_iron', type: 'create:mixing', input: 'create:crushed_raw_iron' })
 	event.recipes.createMixing([
 	Fluid.of('molten_metals:molten_iron',54000),
 	Item.of('3x molten_metals:slag'),
@@ -224,9 +260,19 @@ ServerEvents.recipes(event => {
 	event.recipes.createCompacting('create_dd:industrial_iron_ingot', [
 	  'minecraft:iron_ingot'
 	]).heated()
+	
+	// DD Industrial Iron Bulk Recipe
+	event.recipes.createCompacting('16x create_dd:industrial_iron_ingot', [
+	  '16x minecraft:iron_ingot'
+	]).heated()
 
 	// Deco Industrial Iron Recipe	
 	event.recipes.createCompacting('createdeco:industrial_iron_ingot', [
 	  'create:iron_sheet'
+	]).heated()
+	
+	// Deco Industrial Iron Bulk Recipe	
+	event.recipes.createCompacting('16x createdeco:industrial_iron_ingot', [
+	  '16x create:iron_sheet'
 	]).heated()
 })

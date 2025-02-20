@@ -18,7 +18,7 @@
 	food: {
 		// default: hungerValue * power(0.7, timesEaten)
 		// 	Must be a valid expression
-		hunger: hungerValue * power(0.9, timesEaten)
+		hunger: hungerValue * power(0.99, timesEaten)
 		// default: saturationValue
 		// 	Must be a valid expression
 		saturation: saturationValue

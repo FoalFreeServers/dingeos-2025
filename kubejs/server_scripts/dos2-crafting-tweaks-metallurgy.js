@@ -1,5 +1,24 @@
 ServerEvents.tags('item',event => {
 	
+	
+	//Making tags for copper blocks
+	event.add('boice:copper_blocks', [
+		'minecraft:copper_block', 'minecraft:exposed_copper', 'minecraft:weathered_copper','minecraft:oxidized_copper',
+	])
+	
+	event.add('boice:cut_copper_blocks', [
+		'minecraft:cut_copper', 'minecraft:exposed_cut_copper', 'minecraft:weathered_cut_copper', 'minecraft:oxidized_cut_copper'
+	])
+	
+	event.add('boice:copper_stairs', [
+		'minecraft:cut_copper_stairs', 'minecraft:exposed_cut_copper_stairs', 'minecraft:weathered_cut_copper_stairs', 'minecraft:oxidized_cut_copper_stairs'
+	])
+		
+	event.add('boice:copper_slabs', [
+		'minecraft:cut_copper_slab', 'minecraft:exposed_cut_copper_slab', 'minecraft:weathered_cut_copper_slab', 'minecraft:oxidized_cut_copper_slab'
+	])
+	
+	//Removing crushed ores from smeltable tags
 	event.remove('molten_metals:meltable_raw_copper', 'create:crushed_raw_copper')
 
 	event.remove('molten_metals:meltable_raw_iron', 'create:crushed_raw_iron')
@@ -22,8 +41,8 @@ ServerEvents.recipes(event => {
 	// BRASS SECTION ----------------------------------------------------------------------------------
 
 	// High Yield Brass Recipe - Confirmed IG
-	event.remove({ output: 'molten_metals:molten_brass', type: 'create:mixing', input: 'molten_metals:molten_zinc', input: 'molten_metals:molten_copper' })
-	event.recipes.createMixing([
+	event.remove({ output: 'molten_metals:molten_brass', input: 'molten_metals:molten_zinc', input: 'molten_metals:molten_copper' })
+	event.recipes.createCompacting([
 	  Fluid.of('molten_metals:molten_brass',81000)
 	  ], [
 	  Fluid.of('molten_metals:molten_copper',36000),
@@ -63,7 +82,7 @@ ServerEvents.recipes(event => {
 	Item.of('2x molten_metals:slag')], [
 	  '2x create:crushed_raw_copper',
 	  'garnished:salt_compound',
-	  Fluid.of('minecraft:water',81000)
+	Fluid.of('minecraft:water',81000)
 	]).heated()
 	
 	// ELECTRUM SECTION ---------------------------------------------------------------------------------
@@ -133,7 +152,7 @@ ServerEvents.recipes(event => {
 	// IRON SECTION -------------------------------------------------------------------------------------
 	
 	// High Yield Iron Recipe - Confirmed IG
-	event.remove({ output: 'molten_metals:molten_iron', type: 'create:mixing', input: 'create:crushed_raw_iron' })
+	//event.remove({ output: 'molten_metals:molten_iron', type: 'create:mixing', input: 'create:crushed_raw_iron' })
 	event.recipes.createMixing([
 	Fluid.of('molten_metals:molten_iron',54000),
 	Item.of('3x molten_metals:slag'),
@@ -275,4 +294,32 @@ ServerEvents.recipes(event => {
 	event.recipes.createCompacting('16x createdeco:industrial_iron_ingot', [
 	  '16x create:iron_sheet'
 	]).heated()
+	
+	// --------------------------------------------------------------------------------------------------
+
+	// SCRAP RECYCLING SECTION
+	
+	//Melting Copper Block Variants
+	event.remove({ fluid:'molten_metals:molten_copper', type: 'create:mixing', input: 'minecraft:copper_block' })
+	
+	event.recipes.createMixing(
+	Fluid.of('molten_metals:molten_copper',81000), 
+	  '#boice:copper_blocks'
+	).heated()
+	
+	event.recipes.createMixing(
+	Fluid.of('molten_metals:molten_copper',20250), 
+	  '#boice:cut_copper_blocks'
+	).heated()
+	
+	event.recipes.createMixing(
+	Fluid.of('molten_metals:molten_copper',20250), 
+	  '#boice:copper_stairs'
+	).heated()
+	
+	event.recipes.createMixing(
+	Fluid.of('molten_metals:molten_copper',10125), 
+	  '#boice:copper_slabs'
+	).heated()
+	
 })

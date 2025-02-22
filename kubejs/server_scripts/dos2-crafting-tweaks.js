@@ -747,96 +747,6 @@ event.shaped(
   }
 )
 })
-
-
-// ████████ LOOTBAG RECIPES AND ADDITIONS TO RECIPES ████████████████████████████████████████████████████
-
-
-// Crafting 3 lootbags into better rarity
-
-/* 
-const createbag = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}');
-
-ServerEvents.recipes(event => {
-	event.shapeless(
-	  Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}'), // arg 1: output
-	  [
-		createbag,
-		createbag,
-		createbag
-	  ]
-	)
-})
-*/
-
-// 3 Common -> 1 Rare Lootbag
-const createbagc = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}').strongNBT();
-
-ServerEvents.recipes(event => {
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'), // arg 1: output
-      [
-        createbagc,
-        createbagc,
-        createbagc
-      ]
-    )
-
-// 3 Rare -> 1 Epic Lootbag
-const createbagr = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'), // arg 1: output
-      [
-        createbagr,
-        createbagr,
-        createbagr
-      ]
-    )
-
-// 3 Epic -> 1 Legendary Lootbag
-const createbage = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag",Name:"Legendary Lootbag (Create)",Type:"LEGENDARY"}'), // arg 1: output
-      [
-        createbage,
-        createbage,
-        createbage
-      ]
-    )
-	
-// 3 Common -> 1 Rare Lootbag (XL)
-const createbagcxl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}'), // arg 1: output
-      [
-        createbagcxl,
-        createbagcxl,
-        createbagcxl
-      ]
-    )
-
-// 3 Rare -> 1 Epic Lootbag (XL)
-const createbagrxl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}'), // arg 1: output
-      [
-        createbagrxl,
-        createbagrxl,
-        createbagrxl
-      ]
-    )
-	
-// 3 Epic -> 1 Legendary Lootbag (XL)
-const createbagexl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag_xl",Name:"Legendary XL Lootbag (Create)",Type:"LEGENDARY"}'), // arg 1: output
-      [
-        createbagexl,
-        createbagexl,
-        createbagexl
-      ]
-    )
-})
 	
 ServerEvents.tags('block', event => {
 	// Add missing nether ore to the c:nether_ores tag
@@ -844,109 +754,6 @@ ServerEvents.tags('block', event => {
 })
 
 	// Loot Bag drop from ores
-
-LootJS.modifiers((event) => {
-    event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.005)
-        .weatherCheck({
-            raining: false,
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:14675181,Loot:"loot_bags:loot_bags/overworld_ores_lootbag",Name:"Lootbag (Overworld Ores)",Type:"COMMON"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-    
-		// COMMON LOOTBAG
-	event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.01)
-        .weatherCheck({
-            raining: false,
-			thundering: false
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-		// RARE LOOTBAG
-    event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.002)
-        .weatherCheck({
-            raining: false,
-			thundering: false
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-		// EPIC LOOTBAG
-    event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.0006)
-        .weatherCheck({
-            raining: false,
-			thundering: false
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-		// NETHER ORES LOOTBAG
-    event
-        .addBlockLootModifier("#c:nether_ores")
-        .randomChance(0.01)
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:9604210,Loot:"loot_bags:loot_bags/nether_ores_lootbag",Name:"Lootbag (Nether Ores)",Type:"COMMON"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-		// XL COMMON LOOTBAG
-    event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.025)
-		.dropExperience(50)
-        .weatherCheck({
-            raining: true,
-			thundering:true
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-		// XL RARE LOOTBAG
-    event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.01)
-		.dropExperience(300)
-        .weatherCheck({
-            raining: true,
-			thundering:true
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-		// XL EPIC LOOTBAG
-    event
-        .addBlockLootModifier("#c:ores")
-		.anyDimension("minecraft:overworld")
-        .randomChance(0.0035)
-		.dropExperience(700)
-        .weatherCheck({
-            raining: true,
-			thundering:true
-        })
-        .addLoot(Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'))
-		.triggerLightningStrike(false)
-		.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
-		
-})
 
 
 // ████████ MISCELLANEOUS RECIPES ████████████████████████████████████████████████████
@@ -975,4 +782,137 @@ ServerEvents.recipes(event => {
 	event.stonecutting('6x copycats:copycat_slab', 'create:zinc_ingot')
 	event.stonecutting('3x copycats:copycat_stairs', 'create:zinc_ingot')
 	event.stonecutting('3x copycats:copycat_vertical_stairs', 'create:zinc_ingot')
+	
+	// RPG Series Adjustments
+	
+	event.remove({ mod: 'jewelry' })
+	event.remove({ output: 'runes:crafting_altar' })
+	event.remove({output: '#runes:runes'})
+	event.remove({output: ['paladins:holy_wand','paladins:holy_staff','paladins:diamond_holy_wand','paladins:diamond_holy_staff']})
+	
+	// Healing Rune
+	event.shapeless(
+  Item.of('runes:healing_stone', 2),
+  [
+    'create:andesite_alloy',
+    'minecraft:glistering_melon_slice'
+  ]
+)
+	// Frost Rune
+	event.shapeless(
+  Item.of('runes:frost_stone', 2),
+  [
+    'create:andesite_alloy',
+    'minecraft:snowball',
+    'minecraft:snowball',
+    'minecraft:snowball',
+    'minecraft:snowball'
+  ]
+)
+
+	// Arcane Rune
+	event.shapeless(
+  Item.of('runes:arcane_stone', 4),
+  [
+    'create:andesite_alloy',
+    'minecraft:amethyst_shard',
+    'minecraft:amethyst_shard',
+    'minecraft:glowstone',
+    'minecraft:ender_pearl'
+  ]
+)
+
+	// Arcane Rune
+	event.shapeless(
+  Item.of('runes:arcane_stone', 1),
+  [
+    'create:andesite_alloy',
+    'minecraft:amethyst_shard',
+    'minecraft:glowstone'
+  ]
+)
+
+	// Fire Rune
+	event.shapeless(
+  Item.of('runes:fire_stone', 3),
+  [
+    'create:andesite_alloy',
+    'minecraft:blaze_powder'
+  ]
+)
+
+	// Fire Rune
+	event.shapeless(
+  Item.of('runes:fire_stone', 16),
+  [
+    'create:andesite_alloy',
+    'minecraft:blaze_powder',
+    'create_dd:ember_alloy'
+  ]
+)
+
+	// Holy Wand
+	event.shaped(
+	  Item.of('paladins:holy_wand'),
+	  [
+		' CA',
+		' BC',
+		'B  '
+	  ],
+	  {
+		A: 'compressedblocks:compressed_gold_x1',
+		B: 'createaddition:iron_rod',
+		C: 'create:brass_nugget'
+	  }
+	)
+
+	// Diamond Holy Wand
+	event.shaped(
+	  Item.of('paladins:diamond_holy_wand'),
+	  [
+		' CA',
+		' BC',
+		'B  '
+	  ],
+	  {
+		A: 'compressedblocks:compressed_diamond_x1',
+		B: 'createaddition:iron_rod',
+		C: 'minecraft:diamond'
+	  }
+	)
+	
+	// Holy Staff
+	event.shaped(
+	  Item.of('paladins:holy_staff'),
+	  [
+		' AA',
+		' BA',
+		'B  '
+	  ],
+	  {
+		A: 'compressedblocks:compressed_gold_x1',
+		B: 'createaddition:iron_rod',
+	  }
+	)
+	
+	// Diamond Holy Staff
+	event.shaped(
+	  Item.of('paladins:diamond_holy_staff'),
+	  [
+		' AA',
+		' BA',
+		'B  '
+	  ],
+	  {
+		A: 'compressedblocks:compressed_diamond_x1',
+		B: 'createaddition:iron_rod',
+	  }
+	)
+});
+
+
+// RENEWABLE DIAMONDS MOD (HIGH PRESSURE) TWEAKS
+
+ServerEvents.recipes(event => {
+	event.remove({ mod: 'create_high_pressure' })
 });

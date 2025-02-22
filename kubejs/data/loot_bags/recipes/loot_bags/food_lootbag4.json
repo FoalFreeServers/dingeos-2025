@@ -1,0 +1,59 @@
+{
+  "type": "lootbags:loot",
+  "name": "Lootbag (Food 3)",
+  "color": "#EE50E7",
+  "rarity": "EPIC",
+  "output": {
+    "rolls": 32,
+    "entries": [
+      {
+        "stack": "bakery:sweet_dough",
+        "weight": 38
+      },
+      {
+        "stack": "bakery:waffle",
+        "weight": 24
+      },
+      {
+        "stack": "bakery:misslilitu_biscuit",
+        "weight": 12
+      },
+      {
+        "stack": "bakery:bun",
+        "weight": 8
+      },
+      {
+        "stack": "farmersdelight:hamburger",
+        "weight": 6
+      },
+      {
+        "stack": "candlelight:beef_wellington",
+        "weight": 5
+      },
+      {
+        "stack": "candlelight:chocolate_mousse",
+        "weight": 5
+      },
+      {
+        "stack": "minecraft:golden_carrot",
+        "weight": 12
+      },
+      {
+        "stack": "candlelight:lasagne",
+        "weight": 14
+      },
+      {
+        "stack": "farm_and_charm:roasted_corn",
+        "weight": 42
+      },
+      {
+        "stack": "farm_and_charm:farmers_bread",
+        "weight": 18
+      },
+      {
+        "stack": "farm_and_charm:stuffed_chicken",
+        "weight": 12
+      }
+    ]
+  }
+}

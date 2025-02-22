@@ -25,7 +25,7 @@ LootJS.modifiers((event) => {
         .addBlockLootModifier("#c:ores")
 		.not(n=>n.entityPredicate(() => true))
         .anyDimension("minecraft:overworld")
-        .randomChance(0.0012)
+        .randomChance(0.00012)
         .dropExperience(50)
         //.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
 		.triggerLightningStrike(false)
@@ -36,7 +36,7 @@ LootJS.modifiers((event) => {
         .addBlockLootModifier("#c:ores")
 		.not(n=>n.entityPredicate(() => true))
         .anyDimension("minecraft:overworld")
-        .randomChance(0.0008)
+        .randomChance(0.00008)
         .dropExperience(250)
         //.matchMainHand(ItemFilter.hasEnchantment("silk_touch", 0, 0))
 		.triggerLightningStrike(false)
@@ -47,7 +47,7 @@ LootJS.modifiers((event) => {
         .addBlockLootModifier("#c:ores")
 		.not(n=>n.entityPredicate(() => true))
         .anyDimension("minecraft:overworld")
-        .randomChance(0.001)
+        .randomChance(0.0001)
         .weatherCheck({
             raining: true,
             thundering:true
@@ -62,7 +62,7 @@ LootJS.modifiers((event) => {
         .addBlockLootModifier("#c:ores")
 		.not(n=>n.entityPredicate(() => true))
         .anyDimension("minecraft:overworld")
-        .randomChance(0.00035)
+        .randomChance(0.000035)
         .weatherCheck({
             raining: true,
             thundering:true
@@ -80,7 +80,7 @@ LootJS.modifiers((event) => {
         .anyDimension("minecraft:overworld")
 		.entityPredicate(() => true)
         .not(n=>n.matchMainHand(ItemFilter.hasEnchantment("minecraft:silk_touch")))
-        .randomChance(0.005)
+        .randomChance(0.0055)
         .dropExperience(50)
 		.triggerLightningStrike(false)
 		.addLoot(global.commonCreate)
@@ -117,7 +117,7 @@ LootJS.modifiers((event) => {
         .anyDimension("minecraft:overworld")
 		.entityPredicate(() => true)
         .not(n=>n.matchMainHand(ItemFilter.hasEnchantment("minecraft:silk_touch")))
-        .randomChance(0.0004)
+        .randomChance(0.00038)
         .weatherCheck({
             raining: true,
             thundering:true
@@ -128,77 +128,74 @@ LootJS.modifiers((event) => {
 })
 
 
-// 3 Common -> 1 Rare Lootbag
 const createbagc = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag",Name:"Lootbag (Create)",Type:"COMMON"}').strongNBT();
+const createbagr = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}').strongNBT();
+const createbage = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}').strongNBT();
+const createbagl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag",Name:"Legendary Lootbag (Create)",Type:"LEGENDARY"}').strongNBT();
+
+const createbagcXL = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}').strongNBT();
+const createbagrXL = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}').strongNBT();
+const createbageXL = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}').strongNBT();
+const createbaglXL = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag_xl",Name:"Legendary XL Lootbag (Create)",Type:"LEGENDARY"}').strongNBT();
 
 ServerEvents.recipes(event => {
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}'), // arg 1: output
-      [
-        createbagc,
-        createbagc,
-		createbagc,
-        createbagc
-      ]
-    )
-
-// 3 Rare -> 1 Epic Lootbag
-const createbagr = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag",Name:"Rare Lootbag (Create)",Type:"RARE"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}'), // arg 1: output
-      [
-        createbagr,
-        createbagr,
-		createbagr,
-        createbagr
-      ]
-    )
-
-// 3 Epic -> 1 Legendary Lootbag
-const createbage = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag",Name:"Epic Lootbag (Create)",Type:"EPIC"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag",Name:"Legendary Lootbag (Create)",Type:"LEGENDARY"}'), // arg 1: output
-      [
-        createbage,
-        createbage,
-		createbage,
-        createbage
-      ]
-    )
+	// 4 Common -> 1 Rare Lootbag
+	event.recipes.createCompacting(createbagr, [
+	  createbagc,
+	  createbagc,
+	  createbagc,
+	  createbagc,
+  	  "create_dd:overburden_casing"
+	])
 	
-// 3 Common -> 1 Rare Lootbag (XL)
-const createbagcxl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/create_lootbag_xl",Name:"XL Lootbag (Create)",Type:"COMMON"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}'), // arg 1: output
-      [
-        createbagcxl,
-        createbagcxl,
-		createbagcxl,
-        createbagcxl
-      ]
-    )
-
-// 3 Rare -> 1 Epic Lootbag (XL)
-const createbagrxl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/rare_create_lootbag_xl",Name:"Rare XL Lootbag (Create)",Type:"RARE"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}'), // arg 1: output
-      [
-        createbagrxl,
-        createbagrxl,
-		createbagrxl,
-        createbagrxl
-      ]
-    )
+	// 4 Rare -> 1 Epic Lootbag
+	event.recipes.createCompacting(createbage, [
+	  createbagr,
+	  createbagr,
+	  createbagr,
+	  createbagr,
+	  "create:railway_casing"
+	]).heated()
 	
-// 3 Epic -> 1 Legendary Lootbag (XL)
-const createbagexl = Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/epic_create_lootbag_xl",Name:"Epic XL Lootbag (Create)",Type:"EPIC"}').strongNBT();
-    event.shapeless(
-      Item.of('lootbags:loot_bag', '{Color:12221734,Loot:"loot_bags:loot_bags/legendary_create_lootbag_xl",Name:"Legendary XL Lootbag (Create)",Type:"LEGENDARY"}'), // arg 1: output
-      [
-        createbagexl,
-        createbagexl,
-		createbagexl,
-        createbagexl
-      ]
-    )
+	// 4 Epic -> 1 Legendary Lootbag
+	event.recipes.createCompacting(createbagl, [
+	  createbage,
+	  createbage,
+	  createbage,
+	  createbage,
+	  "create_dd:netherite_casing"
+	]).superheated()
+	
+	// 4 Common -> 1 Rare Lootbag (XL)
+	event.recipes.createCompacting(createbagrXL, [
+	  createbagcXL,
+	  createbagcXL,
+	  createbagcXL,
+	  createbagcXL,
+	  "create_dd:overburden_casing",
+	  "create_dd:overburden_casing",
+	  "create_dd:overburden_casing"
+	])
+	
+	// 4 Rare -> 1 Epic Lootbag (XL)
+	event.recipes.createCompacting(createbageXL, [
+	  createbagrXL,
+	  createbagrXL,
+	  createbagrXL,
+	  createbagrXL,
+	  "create:railway_casing",
+	  "create:railway_casing",
+	  "create:railway_casing"
+	]).heated()
+	
+	// 4 Epic -> 1 Legendary Lootbag (XL)
+	event.recipes.createCompacting(createbaglXL, [
+	  createbageXL,
+	  createbageXL,
+	  createbageXL,
+	  createbageXL,
+	  "create_dd:netherite_casing",
+	  "create_dd:netherite_casing",
+	  "create_dd:netherite_casing"
+	]).superheated()
 })

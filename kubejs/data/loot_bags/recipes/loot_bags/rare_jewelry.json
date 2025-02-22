@@ -1,0 +1,123 @@
+{
+  "type": "lootbags:loot",
+  "name": "Rare Lootbag (Jewelry)",
+  "color": "#DFECED",
+  "rarity": "UNCOMMON",
+  "output": {
+    "rolls": 1,
+    "entries": [
+  {
+    "stack": "jewelry:netherite_ruby_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_topaz_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_citrine_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_jade_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_sapphire_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_tanzanite_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_ruby_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_topaz_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_citrine_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_jade_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_sapphire_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_tanzanite_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:unique_attack_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_attack_necklace",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_dex_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_dex_necklace",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_tank_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_tank_necklace",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_archer_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_archer_necklace",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_arcane_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_arcane_necklace",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_fire_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_fire_necklace",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_frost_ring",
+    "weight": 2
+  },
+  {
+    "stack": "jewelry:unique_frost_necklace",
+    "weight": 3
+  },
+  {
+    "stack": "jewelry:unique_healing_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:unique_healing_necklace",
+    "weight": 1
+  }
+]
+  }
+}

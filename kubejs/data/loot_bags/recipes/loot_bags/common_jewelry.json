@@ -1,0 +1,107 @@
+{
+  "type": "lootbags:loot",
+  "name": "Common Lootbag (Jewelry)",
+  "color": "#DFECED",
+  "rarity": "UNCOMMON",
+  "output": {
+    "rolls": 1,
+    "entries": [
+  {
+    "stack": "jewelry:netherite_ruby_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_topaz_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_citrine_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_jade_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_sapphire_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_tanzanite_ring",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:ruby_ring",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:topaz_ring",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:citrine_ring",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:jade_ring",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:sapphire_ring",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:tanzanite_ring",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:netherite_ruby_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_topaz_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_citrine_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_jade_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_sapphire_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:netherite_tanzanite_necklace",
+    "weight": 1
+  },
+  {
+    "stack": "jewelry:ruby_necklace",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:topaz_necklace",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:citrine_necklace",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:jade_necklace",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:sapphire_necklace",
+    "weight": 15
+  },
+  {
+    "stack": "jewelry:tanzanite_necklace",
+    "weight": 15
+  }
+]
+  }
+}

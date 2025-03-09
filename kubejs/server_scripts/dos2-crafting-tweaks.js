@@ -1,3 +1,17 @@
+/*
+
+LAST UPDATE: 02 MAR 25
+CHANGES:
+- Renewable Diamonds (Create: High Pressure Recipes)
+- Removed Scorchia -> Brittle Dust, conflicts with Scorchia -> Coal Piece
+
+*/
+
+ServerEvents.tags('fluid', event => {
+	// event.add('boice:lumisene', "supplementaries:lumisene")
+	event.add('boice:lumisene', "supplementaries:lumisene")
+})
+
 ServerEvents.recipes(event => {
 
 // ████████ UNIVERSAL WOOD RECIPES ████████████████████████████████████████████████████
@@ -114,6 +128,10 @@ ServerEvents.tags('block', event => {
   event.add('minecraft:needs_stone_tool', 'new_soviet:concrete_plate_stairs')
   event.add('minecraft:mineable/pickaxe', 'new_soviet:concrete_plate_slab')
   event.add('minecraft:needs_stone_tool', 'new_soviet:concrete_plate_slab')
+  event.add('minecraft:mineable/pickaxe', 'new_soviet:glazed_brick_tiles')
+  event.add('minecraft:needs_stone_tool', 'new_soviet:glazed_brick_tiles')
+  event.add('minecraft:mineable/pickaxe', 'new_soviet:cracked_glazed_brick_tiles')
+  event.add('minecraft:needs_stone_tool', 'new_soviet:cracked_glazed_brick_tiles')
 })
 
 ServerEvents.tags('item', event => {
@@ -202,6 +220,8 @@ ServerEvents.tags('item', event => {
 	event.add('c:stripped_wood', 'betterend:jellyshroom_stripped_bark')
 	event.add('c:stripped_logs', 'betterend:lucernia_stripped_log')
 	event.add('c:stripped_wood', 'betterend:lucernia_stripped_bark')
+
+	event.add('c:lumisene', "supplementaries:lumisene")
 })
 
 // ████████ FALLEN STARGAZE RECIPE TWEAKS ████████████████████████████████████████████████████
@@ -216,6 +236,15 @@ ServerEvents.recipes(event => {
 // ████████ CREATE ADJUSTMENTS & FIXES ████████████████████████████████████████████████████
 
 ServerEvents.recipes(event => {
+	
+	// Mastic Resin Fix (recipe isn't working for some reason)
+	event.recipes.createMixing("garnished:mastic_resin", [
+	  "minecraft:wheat_seeds",
+	  "minecraft:wheat_seeds",
+	  "minecraft:wheat_seeds",
+	  "minecraft:slime_ball",
+	  "minecraft:sugar"
+	]).heated()
 	
 	// Removal of Modded Motors
 	
@@ -270,7 +299,7 @@ ServerEvents.recipes(event => {
 	
 	event.remove({ output: 'supplementaries:lumisene_bucket' })
 	event.remove({ output: 'supplementaries:lumisene_bottle' })
-	event.recipes.createMixing('supplementaries:lumisene_bucket', [
+	event.recipes.createMixing(Fluid.of('supplementaries:lumisene', 4500) , [
 		'minecraft:blaze_powder',
 		'minecraft:glow_berries',
 		'minecraft:glow_berries',
@@ -484,7 +513,7 @@ ServerEvents.recipes(event => {
 
 	// tagging tconstruct glass with chipped glass tags
 
-const glass = [
+const dyes = [
 	'white',
 	'orange',
 	'magenta',
@@ -507,8 +536,8 @@ const glass = [
  // 'tconstruct:' + g + '_clear_stained_glass'
 
 ServerEvents.tags('item', event => {
-	glass.forEach(g => event.add('chipped:' + g + '_stained_glass', 'tconstruct:' + g + '_clear_stained_glass'))
-	glass.forEach(g => event.add('chipped:' + g + '_stained_glass_pane', 'tconstruct:' + g + '_clear_stained_glass_pane'))
+	dyes.forEach(dyes => event.add('chipped:' + dyes + '_stained_glass', 'tconstruct:' + dyes + '_clear_stained_glass'))
+	dyes.forEach(dyes => event.add('chipped:' + dyes + '_stained_glass_pane', 'tconstruct:' + dyes + '_clear_stained_glass_pane'))
 	event.add('chipped:glass', 'tconstruct:clear_glass');
 	event.add('chipped:glass_pane', 'tconstruct:clear_glass_pane');
 
@@ -914,5 +943,21 @@ ServerEvents.recipes(event => {
 // RENEWABLE DIAMONDS MOD (HIGH PRESSURE) TWEAKS
 
 ServerEvents.recipes(event => {
-	event.remove({ mod: 'create_high_pressure' })
+	// event.remove({ mod: 'create_high_pressure' })
+	event.remove({ type: 'create:crushing', input: 'create:scorchia', output: 'garnished:brittle_dust' })
+	event.remove({ type: 'create:milling', input: 'create:scorchia', output: 'garnished:brittle_dust' })
+	event.remove({ input: 'minecraft:coal', output: 'create_dd:coal_piece' })
+
+	event.smelting('create_high_pressure:graphite_powder', 'minecraft:coal')
+	
+	event.recipes.createCompacting(Item.of('create_high_pressure:graphite_compressed').withChance(0.35), [
+	'create_high_pressure:graphite_powder',
+	'create_high_pressure:graphite_powder',
+	'create_high_pressure:graphite_powder'
+	]).heated()
+	
+	event.recipes.createCompacting([Item.of('minecraft:diamond').withChance(0.007),Item.of('create_high_pressure:impure_diamond').withChance(0.85)], [
+	'create_high_pressure:graphite_compressed'
+	]).superheated()
+
 });

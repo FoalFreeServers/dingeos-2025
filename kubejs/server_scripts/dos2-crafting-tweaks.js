@@ -1,9 +1,8 @@
 /*
 
-LAST UPDATE: 02 MAR 25
+LAST UPDATE: 10 MAR 25
 CHANGES:
-- Renewable Diamonds (Create: High Pressure Recipes)
-- Removed Scorchia -> Brittle Dust, conflicts with Scorchia -> Coal Piece
+- Added missing recipe for Solidified Garnish Block
 
 */
 
@@ -139,6 +138,8 @@ ServerEvents.tags('item', event => {
 	// Unifying Kelp
 	event.add('boice:kelp', 'minecraft:kelp')
 	event.add('boice:kelp', 'garnished:vermilion_kelp')
+	// Unifying tomato
+	event.add('c:tomato', 'farmersdelight:tomato')
 
 // Add missing wood to stripped log tag
 
@@ -246,6 +247,14 @@ ServerEvents.recipes(event => {
 	  "minecraft:sugar"
 	]).heated()
 	
+	// Solidified Garnish Block
+	event.recipes.createCompacting('garnished:solidified_garnish', [
+		Fluid.of('garnished:garnish', 81000),
+		'garnished:salt_compound',
+		'minecraft:wheat',
+		'minecraft:wheat'
+	])
+	
 	// Removal of Modded Motors
 	
 	event.remove({ output: 'create_dd:accelerator_motor' })
@@ -281,7 +290,7 @@ ServerEvents.recipes(event => {
 		'create:cinder_flour',
 		'create:cinder_flour',
 		'create:polished_rose_quartz'
-])
+	])
 	
 	// Spectral Ruby Replacement Recipe
 	
